@@ -1,0 +1,12 @@
+.item-categoria{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+.item-categoria span{
+    font-size: 30px;
+}
+.item-categoria p{
+    margin: 0;
+}
