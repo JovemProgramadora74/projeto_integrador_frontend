@@ -1,9 +1,10 @@
 import './App.css'
+import Footer from "./components/Footer/Footer.jsx";
 
 function App() {
 
     return (<>
-            <h1>Olá, mundo</h1>
+            <Footer />
         </>)
 }
 
