@@ -1,0 +1,27 @@
+.card {
+    border: 1px solid black;
+    width: 250px;
+    border-radius: 25px;
+}
+
+.tempo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tempo p {
+    margin: 0;
+}
+
+.macro-barra {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.macro-value {
+    width: 30%;
+    font-weight: bold;
+    min-width: 45px;
+}

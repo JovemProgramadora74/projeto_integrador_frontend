@@ -1,10 +1,14 @@
 import './App.css'
+import Badge from "./components/RecipeCard/Badge.jsx";
+import RecipeCard from "./components/RecipeCard/RecipeCard.jsx";
 
 function App() {
-
-    return (<>
-            <h1>Olá, mundo</h1>
-        </>)
+    return (
+        <>
+            <Badge/>
+            <RecipeCard/>
+        </>
+    );
 }
 
 export default App
