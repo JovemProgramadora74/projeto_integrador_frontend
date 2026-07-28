@@ -1,10 +1,14 @@
 import './App.css'
+import ChefHighlightCard from "./components/CardDestaqueChef/ChefHighlightCard..jsx";
 
 function App() {
 
-    return (<>
-            <h1>Olá, mundo</h1>
-        </>)
+    return (
+        <>
+            <ChefHighlightCard imagem={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzXMrDGJ7ejbMdX4RbOxZ86MkXhasbxwdTRsOyElprCb0PAkMGzhqeW4uR&s=10"}></ChefHighlightCard>
+        </>
+    );
+
 }
 
 export default App

@@ -1,0 +1,17 @@
+.chef-card {
+    display: flex;
+    flex-direction: row;
+    border-radius: 60px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+.chef-card-content {
+    background-color: #C0532B;
+    width: 100%;
+
+}
+.chef-card-imagem{
+    height: 100%;
+}
