@@ -1,0 +1,20 @@
+.search-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #2B1B17;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px;
+    transition: color 0.2s ease;
+}
+
+.search-btn:hover {
+    color: #C0532B;
+}
+
+.search-icon {
+    width: 22px;
+    height: 22px;
+}
