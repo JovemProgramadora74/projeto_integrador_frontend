@@ -1,7 +1,22 @@
-.card {
-    border: 1px solid black;
-    width: 250px;
+.recipe-card {
+    border: 1px solid #964B00;
+    max-width: 316.8px;
     border-radius: 25px;
+    overflow: hidden;
+    position: relative;
+}
+
+.imagem-container {
+    width: 100%;
+}
+
+.imagem-container img {
+    width: 100%;
+    display: block;
+}
+
+.card-info {
+    padding: 12px;
 }
 
 .tempo {
@@ -14,14 +29,14 @@
     margin: 0;
 }
 
-.macro-barra {
+.dificuldade {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 8px;
 }
 
-.macro-value {
-    width: 30%;
-    font-weight: bold;
-    min-width: 45px;
+.grupo-macro {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
 }

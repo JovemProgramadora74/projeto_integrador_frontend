@@ -1,8 +1,8 @@
-import './RecipeCard.css'
+import './FavoriteButton.css'
 
 function FavoriteButton () {
     return (
-        <button className = "FavoriteButton">
+        <button className="favorite">
             ❤️
         </button>
     );

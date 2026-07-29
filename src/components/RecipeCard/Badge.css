@@ -1,0 +1,7 @@
+.badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background : chocolate;
+    border-radius: 15px;
+}

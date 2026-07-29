@@ -1,8 +1,8 @@
-import './RecipeCard.css'
+import './Badge.css'
 
-function Badge () {
+function Badge ({etiqueta}) {
     return (
-        <span>Vegana</span>
+        <span className="badge">{etiqueta}</span>
         );
 }
 
