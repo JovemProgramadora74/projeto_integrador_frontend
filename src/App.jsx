@@ -1,9 +1,11 @@
 import './App.css'
+import BotaoChat from "./components/BotaoChat/BotaoChat.jsx";
 
 function App() {
 
-    return (<>
-            <h1>Olá, mundo</h1>
+    return (
+        <>
+            <BotaoChat/>
         </>)
 }
 
