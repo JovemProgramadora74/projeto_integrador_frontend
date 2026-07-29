@@ -13,13 +13,15 @@
 }
 
 * {
+
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    border: none;
 }
 
 body {
-    color: var(--destaque);
+    color: var(--texto);
     background-color: var(--fundo);
     font-family: var(--fonte-texto), serif;
 }
