@@ -18,10 +18,10 @@ function FiltroCategorias() {
     const [categoriaSelecionada, setCategoriaSelecionada] = useState("Todas");
 
     return (
-        <div className="categorias-header"> {/* ADICIONA ESSE DIV */}
+        <div className="categorias-header">
             <h2>Encontre receitas para <br/> o seu estilo de dieta</h2>
 
-            <div className="categorias-lista"> {/* E ESSE DIV */}
+            <div className="categorias-lista">
                 {Categorias.map((cat) => (
                     <ItemCategoria
                         key={cat.label}
@@ -32,7 +32,7 @@ function FiltroCategorias() {
                     />
                 ))}
             </div>
-        </div> /* FECHA AQUI */
+        </div>
     )
 }
 
