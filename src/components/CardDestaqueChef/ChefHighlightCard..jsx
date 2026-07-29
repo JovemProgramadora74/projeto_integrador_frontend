@@ -6,42 +6,44 @@ import ChefProfile from "../PerfilChef/PerfilChef.jsx";
 function ChefHighlightCard(props) {
     return (
         <section className="chef-card">
-
             <div>
-                <img
-                    src={props.imagem}
-                    alt="Mesa preparada"
-                />
+            <img
+                className="card-img"
+                src={props.imagem}
+                alt="Mesa preparada"
+            />
             </div>
 
             <div className="chef-card-content">
-                <ChefBadge/>
+                <h3 className="chef-title"> ESCOLHA DO CHEF</h3>
 
-                <h2>
-                    Receita recomendada
-                </h2>
+                <h2>Receita recomendada</h2>
 
                 <p>
                     Um prato especial escolhido pelo chef para você.
                 </p>
 
-                <ChefProfile
-                    avatar={props.avatar}
-                    nome="Chef Rafael Costa"
-                    credenciais="15 anos de experiência"
-                />"
+                <p>
+                    O Chef Rafael Costa revela seus segredos para transformar legumes simples em uma
+                    refeição digna de restaurante.
+                </p>
 
+                <p className="chef-nome">
+                    Chef: Rafael Costa
+                </p>
 
-                <button>
-                    Ver receita completa
+                <p className="chef-experiencia">
+                    15 anos de experiência na gastronomia
+                </p>
+
+                <button className="botao-receita">
+                    Ver receita completa <span class="arrow">→</span>
                 </button>
 
             </div>
 
         </section>
     );
-
-
 }
 
 export default ChefHighlightCard;
