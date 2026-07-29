@@ -3,10 +3,49 @@
     flex-direction: column;
     align-items: center;
     gap: 8px;
+    cursor: pointer;
+    transition: 0.2s;
 }
-.item-categoria span{
-    font-size: 30px;
+
+.item-categoria:hover button {
+    background-color: #EAE2DC;
+    cursor: pointer;
 }
-.item-categoria p{
-    margin: 0;
+.item-categoria button{
+    width: 64px;
+    height: 60px;
+    border-radius: 100px;
+    border: none;
+    background-color: #F5F1ED;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    padding: 0;
+}
+.item-categoria button svg {
+    color: #A66A4F;
+    width: 28px;
+    height: 28px;
+    stroke-width: 1.5;
+}
+.item-categoria span {
+    font-size: 13px;
+    color: #4B4B4B;
+    font-family: "Segoe UI", sans-serif;
+    font-weight: 500;
+    text-align: center;
+}
+.item-categoria.ativo button {
+    background-color: #A66A4F;
+    border: none;
+}
+
+.item-categoria.ativo button svg {
+    color: white;
+}
+
+.item-categoria.ativo span {
+    color: #A66A4F;
+    font-weight: 600;
 }
