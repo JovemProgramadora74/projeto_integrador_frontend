@@ -1,9 +1,13 @@
 import './Badge.css'
+import {WheatOff} from "lucide-react";
 
-function Badge ({etiqueta}) {
+function Badge({etiqueta}) {
     return (
-        <span className="badge">{etiqueta}</span>
-        );
+        <span className="badge">
+            <WheatOff size={16} />
+            {etiqueta}
+        </span>
+    );
 }
 
 export default Badge;

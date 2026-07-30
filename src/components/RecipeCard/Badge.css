@@ -4,4 +4,11 @@
     left: 12px;
     background : chocolate;
     border-radius: 15px;
+    text-align: center;
+    color: white;
+    padding: 5px 10px;
+    opacity: 0.8;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }

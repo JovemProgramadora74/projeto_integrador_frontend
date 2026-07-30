@@ -7,7 +7,7 @@ function RecipeCard() {
     return (
         <div className="recipe-card">
             <Badge etiqueta="Sem Glúten"/>
-            <FavoriteButton/>
+            <FavoriteButton />
 
             <div className="imagem-container">
                 <img src="https://www.receitasnestle.com.br/sites/default/files/srh_recipes/6cf1bb7359f2dca08445c83ff58bf3bf.jpg"
