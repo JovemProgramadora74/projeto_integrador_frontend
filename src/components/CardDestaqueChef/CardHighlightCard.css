@@ -1,20 +1,16 @@
 .chef-card {
     display: flex;
     flex-direction: row;
-    border-radius: 60px;
+    border-radius: 20px;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
     overflow: hidden;
 }
-.chef-card-content {
-    background-color: #5A2D1D;
-    width: 100%;
+.chef-card-image-container {
+    flex-grow: 1;
+}
 
-}
-.chef-card-imagem {
-    height: 100%;
-}
 .chef-title {
     color: #c89b3c; /* troque pela cor desejada */
     font-family: "Playfair Display", serif;
@@ -68,14 +64,15 @@
 .chef-card-content p {
     color: #FFFFFF;
     font-family: 'Poppins', sans-serif;
-    font-size: 16px;
-    line-height: 1.8; /* aumenta o espaço entre as linhas */
-    margin-bottom: 20px; /* separa os parágrafos */
+    font-size: 12px;
+    line-height: 1.8;
+    margin-bottom: 20px;
 }
 .chef-card-content {
     background-color: #5A2D1D;
     padding: 35px;
-    border-radius: 20px;
+    max-width: 400px;
+
 }
 
 /* ESCOLHA DO CHEFE */
@@ -87,25 +84,6 @@
     letter-spacing: 2px;
     color: #F4C542;
     margin-bottom: 12px;
-}
-
-/* Receita recomendada */
-.chef-card-content h2 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 28px;
-    font-weight: 700;
-    color: #FFFFFF;
-    margin-bottom: 22px;
-}
-
-/* Textos da receita */
-.chef-card-content p {
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px;
-    line-height: 1.8;
-    color: #F5F5F5;
-    margin-bottom: 22px;
-    max-width: 550px;
 }
 
 /* Nome do chef */
@@ -126,24 +104,7 @@
     margin-top: 5px;
 }
 
-.chef-card-content h2 {
-    font-size: 24px;
-    margin-bottom: 15px;
-}
-
-.chef-card-content p {
-    font-size: 14px;
-    line-height: 1.5;
-    margin-bottom: 14px;
-}
-.chef-card-content {
-    max-width: 450px;
-}
-.chef-card-content {
-    background-color: #5A2D1D;
-    padding: 35px;
-    border-radius: 20px;
-}
+.
 
 /* ESCOLHA DO CHEFE */
 .chef-titulo {
@@ -156,23 +117,7 @@
     margin-bottom: 12px;
 }
 
-/* Receita recomendada */
-.chef-card-content h2 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 28px;
-    font-weight: 700;
-    color: #FFFFFF;
-    margin-bottom: 20px;
-}
 
-/* Textos da receita */
-.chef-card-content p {
-    font-family:  "Cormorant Garamond", serif;;
-    font-size: 16px;
-    line-height: 1.7;
-    color:rgba(255, 255, 255, 0.6);
-    margin-bottom: 18px;
-}
 
 /* Nome do chef */
 .chef-nome {
@@ -213,6 +158,7 @@
 
 .card-img {
     height: 100%;
+    width: 100%;
 }
 
 .titulo-chef {

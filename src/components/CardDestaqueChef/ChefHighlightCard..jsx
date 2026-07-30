@@ -6,11 +6,12 @@ import ChefProfile from "../PerfilChef/PerfilChef.jsx";
 function ChefHighlightCard(props) {
     return (
         <section className="chef-card">
-            <div>
+            <div className="chef-card-image-container">
             <img
                 className="card-img"
                 src={props.imagem}
                 alt="Mesa preparada"
+
             />
             </div>
 
