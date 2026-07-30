@@ -2,10 +2,10 @@ import './BarraMacro.css'
 
 function BarraMacro({title, porcentagem = 0, cor}) {
     return (
-        <div className="macro-barra" style={{maxWidth: '100px', height: '100%'}}>
+        <div className="macro-barra">
             <p>{title}</p>
 
-            <div className="linha-barra" style={{display: 'flex'}}>
+            <div className="linha-barra" >
                 {/* Barra de progresso */}
                 <div className="barra-fundo">
                     <div className="barra"
