@@ -1,7 +1,4 @@
-
 import "./CardDestaqueChef.css";
-
-
 
 function ChefHighlightCard(props) {
     return (

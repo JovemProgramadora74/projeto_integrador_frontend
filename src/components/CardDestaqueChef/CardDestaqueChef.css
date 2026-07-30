@@ -13,8 +13,12 @@
 }
 
 .card-img {
-    width: 100%;
-    height: 100%;
+    /* Preserve a proporção original da imagem recortando os excessos */
+    .card-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 }
 
 .chef-card-content {
