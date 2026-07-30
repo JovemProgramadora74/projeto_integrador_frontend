@@ -2,7 +2,7 @@ import "./Login.css"
 
 function Login() {
 
-    return (<>
+    return (
         <div className="login">
             <h1 className="login-titulo">Bem-vindo de volta</h1>
             <p className="login-subtitulo">Acesse sua conta para salvar receitas e acessar conteúdos exclusivos.</p>
@@ -34,7 +34,7 @@ function Login() {
                 </p>
             </form>
         </div>
-    </>)
+    )
 }
 
 export default Login

@@ -1,13 +1,13 @@
 .login {
     max-width: 32rem;
     height: auto;
-    padding: 48px;
+    padding: 3rem;
     display: flex;
     flex-direction: column;
     text-align: left;
     margin: 0 auto;
     background-color: #FFFFFF;
-    border-radius: 24px;
+    border-radius: 1.5rem;
 }
 
 .login-titulo {
@@ -43,15 +43,14 @@ input[type="password"] {
     font-family: inherit;
     font-size: 0.95rem;
     color: #26140e;
-    outline: none;
-    transition: border-color 0.2s;
-    justify-content: flex-end;
     border-radius: 12px;
-    outline: #c2410c;
+    transition: border-color 0.2s;
+
 }
 
 input[type="email"]:focus,
 input[type="password"]:focus {
+    outline: none;
     border-color: #c2410c;
 }
 
@@ -80,14 +79,14 @@ input[type="password"]:focus {
 
 .btn-entrar {
     width: 100%;
-    padding: 14px 24px;
+    padding: 0.875rem  1.5rem;
     background-color: #C24B15;
     color: #FFFFFF;
-    font-family: serif;
-    font-size: 16px;
+    font-family: inherit;
+    font-size: 1rem;
     font-weight: 600;
     border: none;
-    border-radius: 50px;
+    border-radius: 3.125rem;
     cursor: pointer;
     transition: background-color 0.2s ease;
 }
