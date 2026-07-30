@@ -1,7 +1,7 @@
-import "./CardHighlightCard.css"
-import ChefBadge from "../ChefCozinha/ChefBadge.jsx";
 
-import ChefProfile from "../PerfilChef/PerfilChef.jsx";
+import "./CardHighlightCard.css";
+
+
 
 function ChefHighlightCard(props) {
     return (
