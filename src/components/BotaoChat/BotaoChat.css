@@ -1,0 +1,13 @@
+
+.botao-chat {
+    width: 50px;
+    height: 50px;
+    background-color: #C0532B;
+    border-Radius: 50%;
+    border: none;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    color: white;
+    cursor: pointer;
+}
