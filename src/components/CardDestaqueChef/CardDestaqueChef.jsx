@@ -1,5 +1,5 @@
 
-import "./CardHighlightCard.css";
+import "./CardDestaqueChef.css";
 
 
 
@@ -38,7 +38,7 @@ function ChefHighlightCard(props) {
                 </p>
 
                 <button className="botao-receita">
-                    Ver receita completa <span class="arrow">→</span>
+                    Ver receita completa <span className="arrow">→</span>
                 </button>
 
             </div>
