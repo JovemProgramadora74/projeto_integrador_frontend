@@ -14,7 +14,7 @@
     font-family: 'Playfair Display', serif;
     font-size: 2.2rem;
     line-height: 1.5;
-    margin-bottom: 8px;
+    margin-bottom: 0.5rem;
 }
 
 .login-subtitulo {
@@ -31,21 +31,20 @@
     display: block;
     font-size: 0.875rem;
     font-weight: 600;
-    margin-bottom: 8px;
+    margin-bottom: 0.5rem;
 }
 
-input[type="email"],
-input[type="password"] {
+.login-form-grupo input[type="email"],
+.login-form-grupo input[type="password"] {
     width: 100%;
-    padding: 14px 16px;
+    padding: 0.875rem  1rem;
     border: 1px solid #e6e0d8;
     background-color: #FAF7F2;
     font-family: inherit;
     font-size: 0.95rem;
     color: #26140e;
-    border-radius: 12px;
+    border-radius: 0.75rem;
     transition: border-color 0.2s;
-
 }
 
 input[type="email"]:focus,
@@ -58,13 +57,13 @@ input[type="password"]:focus {
     color: #786c66;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 24px;
+    margin-bottom: 1.5rem;
 }
 
 .custom-checkbox {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: .5rem;
 }
 
 .link {
@@ -97,8 +96,8 @@ input[type="password"]:focus {
 
 .cadastrar-conta {
     text-align: center;
-    margin-top: 24px;
-    font-size: 14px;
+    margin-top: 1.5rem;
+    font-size: 0.875rem;
     color: #786C66;
 }
 
