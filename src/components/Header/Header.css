@@ -1,0 +1,20 @@
+.header-bg {
+    width: 100%;
+    background-color: #FBF6F0;
+    border-bottom: 1px solid #E8DEC8;
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 18px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-right-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}

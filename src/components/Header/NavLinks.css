@@ -1,0 +1,22 @@
+.nav-container {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+}
+
+.header-nav-item {
+    text-decoration: none;
+    color: #2B1B17;
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.header-nav-item:hover {
+    color: #C0532B;
+}
+
+.header-nav-item.active {
+    color: #C0532B;
+}

@@ -1,0 +1,17 @@
+.btn-publicar {
+    background-color: #C0532B;
+    color: #FFFFFF;
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 10px 24px;
+    border-radius: 9999px;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background-color 0.2s ease;
+}
+
+.btn-publicar:hover {
+    background-color: #A34220;
+}

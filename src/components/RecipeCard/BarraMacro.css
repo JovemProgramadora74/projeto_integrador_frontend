@@ -1,0 +1,24 @@
+.macro-barra {
+    flex: 1;
+    font-size: .85rem;
+}
+
+.linha-barra {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.barra-fundo {
+    max-width: 50px;
+    width: 100%;
+    height: 8px;
+    background: bisque;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.barra {
+    height: 100%;
+    border-radius: 999px;
+}
