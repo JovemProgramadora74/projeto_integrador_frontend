@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./FiltroCategorias.css"
-import ItemCategoria from "../ItemCategoria/ItemCategoria";
+import ItemCategoria from "../ItemCategoria/ItemCategoria.jsx";
 import { LayoutGrid, UtensilsCrossed, Cake, Salad, Croissant, Coffee, Soup, FlameKindling } from "lucide-react";
 
 const Categorias = [

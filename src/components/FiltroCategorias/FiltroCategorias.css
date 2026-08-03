@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap');
-
 .categorias-header {
     display: flex;
     align-items: center;
@@ -12,7 +10,7 @@
 .categorias-header h2 {
     font-size: 24px;
     font-weight: 700;
-    color: #3A2E2A;;
+    color: #3A2E2A;
     line-height: 1.3;
     margin: 0;
     min-width: 240px;
