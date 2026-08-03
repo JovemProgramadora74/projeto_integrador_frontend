@@ -3,11 +3,9 @@ import HeroRecipeCard from "./ components/hero/HeroRecipeCard.jsx";
 
 function App() {
 
-    return (
-        <>
-            <HeroRecipeCard />
-        </>
-    );
+     return (<>
+            <h1>Olá, mundo</h1>
+        </>)
 }
 
 export default App
