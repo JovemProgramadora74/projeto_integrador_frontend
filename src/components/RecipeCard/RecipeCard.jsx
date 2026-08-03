@@ -18,14 +18,16 @@ function RecipeCard() {
             <div className="card-info">
                 <h2>Bolo de Chocolate com Cobertura de Brigadeiro</h2>
 
-                <div className="tempo">
-                    <Clock size={15} color="#964B00" />
-                    <p>40 minutos</p>
-                </div>
+                <div className="linha">
+                    <div className="tempo">
+                        <Clock size={15} color="#964B00"/>
+                        <p>40 minutos</p>
+                    </div>
 
-                <div className="dificuldade">
-                    <Gauge size={15} color="#964B00" />
-                    <p>Fácil</p>
+                    <div className="dificuldade">
+                        <Gauge size={15} color="#964B00"/>
+                        <p>Fácil</p>
+                    </div>
                 </div>
 
                 <div className="grupo-macro">

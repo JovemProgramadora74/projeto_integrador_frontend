@@ -20,6 +20,14 @@
     padding: 12px;
 }
 
+.linha {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
 .tempo {
     display: flex;
     align-items: center;
