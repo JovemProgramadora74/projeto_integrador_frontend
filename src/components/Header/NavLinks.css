@@ -4,7 +4,7 @@
     gap: 36px;
 }
 
-.nav-item {
+.header-nav-item {
     text-decoration: none;
     color: #2B1B17;
     font-family: system-ui, -apple-system, sans-serif;
@@ -13,10 +13,10 @@
     transition: color 0.2s ease;
 }
 
-.nav-item:hover {
+.header-nav-item:hover {
     color: #C0532B;
 }
 
-.nav-item.active {
+.header-nav-item.active {
     color: #C0532B;
 }

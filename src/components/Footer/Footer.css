@@ -125,11 +125,11 @@
         margin: 0 0 0.5rem 0;
     }
 
-    .nav-item {
+    .footer-nav-item {
         margin-bottom: 0.625rem;
     }
 
-    .nav-item:not(:last-child) {
+    .footer-nav-item:not(:last-child) {
         margin-bottom: 0;
     }
 }

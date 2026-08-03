@@ -11,7 +11,7 @@ export default function NavLinks() {
                 <a
                     key={link}
                     href={`#${link.toLowerCase()}`}
-                    className={`nav-item ${activeLink === link ? 'active' : ''}`}
+                    className={`header-nav-item ${activeLink === link ? 'active' : ''}`}
                     onClick={() => setActiveLink(link)}
                 >
                     {link}
