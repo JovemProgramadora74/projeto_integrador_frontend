@@ -1,0 +1,14 @@
+.favorite {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    border-radius: 100%;
+    padding: 7px;
+    height: 35px;
+    width: 35px;
+    text-align: center;
+    display: flex;
+    opacity: 0.8;
+}
