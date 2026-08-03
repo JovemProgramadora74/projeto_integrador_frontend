@@ -5,7 +5,7 @@ function App() {
 
     return (
         <>
-            <FiltroCategorias/>
+            <h1>Olá, mundo!</h1>
         </>
     );
 }
