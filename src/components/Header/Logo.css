@@ -1,0 +1,20 @@
+.cabecalho, .logo-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.logo-hat-icon {
+    width: 30px;
+    height: 30px;
+    color: #C0532B;
+}
+
+.logo-text {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: #2B1B17;
+    letter-spacing: -0.3px;
+}

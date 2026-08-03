@@ -1,10 +1,10 @@
-import "./App.css"
+import './App.css'
 
 function App() {
-    return (
-        <>
-        </>
-    );
+
+    return (<>
+            <h1>Olá, mundo</h1>
+        </>)
 }
 
-export default App;
+export default App
