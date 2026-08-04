@@ -48,14 +48,14 @@
     transition: border-color 0.2s;
 }
 
-input[type="email"]:focus,
-input[type="text"]:focus,
-input[type="password"]:focus {
+.form-grupo input[type="email"]:focus,
+.form-grupo input[type="text"]:focus,
+.form-grupo input[type="password"]:focus {
     outline: none;
     border-color: #c2410c;
 }
 
-.Form-container {
+.form-container {
     color: #786c66;
     display: flex;
     justify-content: space-between;
@@ -92,15 +92,6 @@ input[type="password"]:focus {
     transition: background-color 0.2s ease;
 }
 
-.btn-entrar:active {
+.btn-cadastrar:active {
     transform: scale(0.99);
 }
-
-.cadastrar-conta {
-    text-align: center;
-    margin-top: 1.5rem;
-    font-size: 0.875rem;
-    color: #786C66;
-}
-
-
