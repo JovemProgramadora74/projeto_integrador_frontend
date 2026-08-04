@@ -4,6 +4,7 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import './index.css'
 import Index from "./pages/Index/Index.jsx";
 import Login from "./pages/Login/Login.jsx";
+import ListagemChefs from "./pages/ListagemChefs/ListagemChefs.jsx";
 
 createRoot(document.getElementById('root')).render(
     <StrictMode>
@@ -12,6 +13,7 @@ createRoot(document.getElementById('root')).render(
                 {/*Adicionar as rotas aqui abaixo */}
                 <Route path="/" element={<Index />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/meus-chefes" element={<ListagemChefs />} />
             </Routes>
         </BrowserRouter>
     </StrictMode>
