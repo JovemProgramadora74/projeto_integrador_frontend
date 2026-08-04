@@ -1,0 +1,97 @@
+.form-container {
+    max-width: 32rem;
+    height: auto;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin: 2rem auto;
+    background-color: #FFFFFF;
+    border-radius: 1.5rem;
+}
+
+.form-titulo {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+}
+
+.form-subtitulo {
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+    color: #786c66;
+}
+
+.form-grupo {
+    margin-bottom: 1.25rem;
+}
+
+.form-grupo label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.form-grupo input[type="email"],
+.form-grupo input[type="text"],
+.form-grupo input[type="password"] {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 1px solid #e6e0d8;
+    background-color: #FAF7F2;
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: #26140e;
+    border-radius: 0.75rem;
+    transition: border-color 0.2s;
+}
+
+.form-grupo input[type="email"]:focus,
+.form-grupo input[type="text"]:focus,
+.form-grupo input[type="password"]:focus {
+    outline: none;
+    border-color: #c2410c;
+}
+
+.form-container {
+    color: #786c66;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.link {
+    text-decoration: none;
+    color: #c2410c;
+    font-weight: 600;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+.btn-cadastrar {
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+    background-color: #C24B15;
+    color: #FFFFFF;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 3.125rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-cadastrar:active {
+    transform: scale(0.99);
+}
