@@ -1,4 +1,4 @@
-.chef-card {
+.chef-destaque-card {
     display: flex;
     flex-direction: row;
     border-radius: 20px;
@@ -8,23 +8,23 @@
     overflow: hidden;
 }
 
-.chef-card-image-container {
+.chef-destaque-card-image-container {
     flex-grow: 1;
 }
 
-.card-img {
+.chef-destaque-card-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
-.chef-card-content {
+.chef-destaque-card-content {
     background-color: #5A2D1D;
     padding: 35px;
     max-width: 400px;
 }
 
-.chef-card-content h2 {
+.chef-destaque-card-contentt h2 {
     color: #FFFFFF;
     font-family: 'Poppins', sans-serif;
     font-size: 28px;
@@ -32,15 +32,15 @@
     margin-bottom: 20px;
 }
 
-.chef-card-content p {
+.chef-destaque-card-content p {
     color: #FFFFFF;
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--fonte-texto);
     font-size: 12px;
     line-height: 1.8;
     margin-bottom: 20px;
 }
 
-.chef-title {
+.chef-destaque-title {
     font-family: "Cormorant Garamond", serif;
     font-size: 12px;
     font-weight: 300;
@@ -48,7 +48,7 @@
     color: #c89b3c;
 }
 
-.chef-titulo {
+.chef-destaque-subtitulo {
     font-family: 'Poppins', sans-serif;
     font-size: 10px;
     font-weight: 800;
@@ -59,15 +59,15 @@
 }
 
 /* Nome do chef */
-.chef-nome {
-    font-family: 'Poppins', sans-serif;
+.chef-destaque-nome {
+    font-family: var(--fonte-texto);
     font-size: 17px;
     font-weight: 700;
     color: white;
     margin-top: 18px;
 }
 
-.chef-experiencia {
+.chef-destaque-experiencia {
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
     font-weight: 400;
@@ -76,7 +76,7 @@
 }
 
 /* Botão */
-.botao-receita {
+.chef-destaque-botao-receita {
     display: inline-block;
     margin-top: 20px;
     padding: 12px 26px;
@@ -89,25 +89,12 @@
     transition: 0.3s;
 }
 
-.botao-receita:hover {
+.chef-destaque-botao-receita:hover {
     background-color: #A24322;
     transform: translateY(-2px);
-}
-
-.recipe-button {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
 }
 
 .arrow {
     font-size: 18px;
     transition: transform 0.3s ease;
-}
-
-.titulo-chef {
-    color: #c89b3c !important;
-    font-family: "Cormorant Garamond", serif !important;
-    font-size: 10px !important;
-    font-weight: 700 !important;
 }

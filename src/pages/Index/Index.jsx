@@ -3,7 +3,7 @@ import Header from "../../components/Header/Header.jsx";
 import HeroSection from "../../components/Hero/HeroSection.jsx";
 import FiltroCategorias from "../../components/FiltroCategorias/FiltroCategorias.jsx";
 import RecipeCard from "../../components/RecipeCard/RecipeCard.jsx";
-import ChefHighlightCard from "../../components/CardDestaqueChef/CardDestaqueChef.jsx";
+import ChefDestaqueCard from "../../components/CardDestaqueChef/CardDestaqueChef.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
 
 function Index() {
@@ -28,7 +28,7 @@ function Index() {
                     <RecipeCard/>
                 </div>
             </div>
-            <ChefHighlightCard
+            <ChefDestaqueCard
                 imagem="https://socialbauru.com.br/wp-content/uploads/2024/05/premioimpera2019-principal-marchante-1024x683-1.jpg"/>
             <Footer/>
         </>

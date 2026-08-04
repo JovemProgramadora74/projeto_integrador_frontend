@@ -1,21 +1,21 @@
 import "./CardDestaqueChef.css";
 
-function ChefHighlightCard(props) {
+function ChefDestaqueCard(props) {
     return (
-        <section className="chef-card">
-            <div className="chef-card-image-container">
+        <section className="chef-destaque-card">
+            <div className="chef-destaque-card-image-container">
             <img
-                className="card-img"
+                className="chef-destaque-card-img"
                 src={props.imagem}
                 alt="Mesa preparada"
 
             />
             </div>
 
-            <div className="chef-card-content">
-                <h3 className="chef-title"> ESCOLHA DO CHEF</h3>
+            <div className="chef-destaque-card-content">
+                <h3 className="chef-destaque-title"> ESCOLHA DO CHEF</h3>
 
-                <h2>Receita recomendada</h2>
+                <h2 className="chef-destaque-subtitulo">Receita recomendada</h2>
 
                 <p>
                     Um prato especial escolhido pelo chef para você.
@@ -26,15 +26,15 @@ function ChefHighlightCard(props) {
                     refeição digna de restaurante.
                 </p>
 
-                <p className="chef-nome">
+                <p className="chef-destaque-nome">
                     Chef: Rafael Costa
                 </p>
 
-                <p className="chef-experiencia">
+                <p className="chef-destaque-experiencia">
                     15 anos de experiência na gastronomia
                 </p>
 
-                <button className="botao-receita">
+                <button className="chef-destaque-botao-receita">
                     Ver receita completa <span className="arrow">→</span>
                 </button>
 
@@ -44,4 +44,4 @@ function ChefHighlightCard(props) {
     );
 }
 
-export default ChefHighlightCard;
+export default ChefDestaqueCard;
