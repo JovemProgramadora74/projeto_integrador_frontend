@@ -1,0 +1,100 @@
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f9f9f9;
+    font-family: sans-serif;
+}
+
+.content-container {
+    flex: 1;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    box-sizing: border-box;
+}
+
+.content-container h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.chefs-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    width: 100%;
+}
+
+.chef-card {
+    background-color: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.chef-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.chef-card h3 {
+    font-size: 1.25rem;
+    color: #222;
+    margin-top: 0;
+    margin-bottom: 12px;
+    border-bottom: 2px solid #C0532B;
+    padding-bottom: 6px;
+}
+
+.chef-card p {
+    font-size: 0.95rem;
+    color: #555;
+    margin: 8px 0;
+}
+
+.chef-card strong {
+    color: #333;
+}
+
+.empty-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    background-color: #fff;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.empty-state p {
+    font-size: 1.2rem;
+    color: #777;
+    margin: 0;
+}
+
+@media (max-width: 600px) {
+    .content-container {
+        padding: 20px 15px;
+    }
+
+    .content-container h2 {
+        font-size: 1.6rem;
+        margin-bottom: 16px;
+    }
+
+    .chefs-list {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .chef-card {
+        padding: 16px;
+    }
+}
