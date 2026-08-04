@@ -1,3 +1,4 @@
+import "./index.css";
 import {StrictMode} from 'react'
 import {createRoot} from 'react-dom/client'
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
@@ -15,8 +16,9 @@ createRoot(document.getElementById('root')).render(
                 <Route path="/cadastro" element={<Cadastro />} />
                 <Route path="/" element={<Index />} />
                 <Route path="/login" element={<Login />} />
+                <Route path="/cria-chef" element={<CriaChef />} />
                 <Route path="/meus-chefes" element={<ListagemChefs />} />
             </Routes>
         </BrowserRouter>
     </StrictMode>
-)
+);
