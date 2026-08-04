@@ -13,6 +13,11 @@ function Cadastro() {
                 </div>
 
                 <div className="cadastro-form-grupo">
+                    <label htmlFor="usuario">Usuário</label>
+                    <input id="usuario" type="text" placeholder="Ex: joão_123"/>
+                </div>
+
+                <div className="cadastro-form-grupo">
                     <label htmlFor="email">E-mail</label>
                     <input id="email" type="email" placeholder="seu@email.com"/>
                 </div>
@@ -23,8 +28,8 @@ function Cadastro() {
                 </div>
 
                 <div className="cadastro-form-grupo">
-                    <label htmlFor="senha">Confirmar Senha</label>
-                    <input id="senha" type="password" placeholder="********"/>
+                    <label htmlFor="confirmar-senha">Confirmar Senha</label>
+                    <input id="confirmar-senha" type="password" placeholder="********"/>
                 </div>
 
                 <div className="cadastro-container">
@@ -34,11 +39,11 @@ function Cadastro() {
                     </label>
                 </div>
 
-                <button type="submit" className="btn-entrar">
+                <button type="submit" className="btn-cadastrar">
                     Cadastrar
                 </button>
 
-                <p className="cadastrar-conta">
+                <p className="fazer-login">
                     Já tem uma conta? <a href="#" className="link">Login</a>
                 </p>
             </form>
