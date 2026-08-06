@@ -20,6 +20,14 @@
     padding: 12px;
 }
 
+.recipe-card-titulo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--texto);
+}
+
+
 .linha {
     display: flex;
     flex-direction: row;
