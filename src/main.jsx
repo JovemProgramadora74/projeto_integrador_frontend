@@ -7,7 +7,7 @@ import Index from "./pages/Index/Index.jsx";
 import Login from "./pages/Login/Login.jsx";
 import ListagemChefs from "./pages/ListagemChefs/ListagemChefs.jsx";
 import CriaChef from "./pages/CriaChef/CriaChef.jsx";
-
+import BotaoChat from "./components/BotaoChat/BotaoChat.jsx";
 createRoot(document.getElementById('root')).render(<StrictMode>
     <BrowserRouter>
         <Routes>
@@ -17,6 +17,8 @@ createRoot(document.getElementById('root')).render(<StrictMode>
             <Route path="/login" element={<Login/>}/>
             <Route path="/cria-chef" element={<CriaChef/>}/>
             <Route path="/meus-chefes" element={<ListagemChefs/>}/>
+
         </Routes>
+        <BotaoChat/>
     </BrowserRouter>
 </StrictMode>);
