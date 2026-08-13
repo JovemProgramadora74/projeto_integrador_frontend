@@ -8,7 +8,7 @@ import Cadastro from './pages/Cadastro/Cadastro.jsx'
 import CriaChef from "./pages/CriaChef/CriaChef.jsx";
 import ListagemChefs from './pages/ListagemChefs/ListagemChefs.jsx'
 import ReceitaCompleta from './pages/ReceitaCompleta/ReceitaCompleta.jsx'
-
+import ReceitasFavoritas from "./pages/ReceitasFavoritas/ReceitasFavoritas.jsx";
 
 createRoot(document.getElementById('root')).render(<StrictMode>
     <BrowserRouter>
@@ -20,6 +20,7 @@ createRoot(document.getElementById('root')).render(<StrictMode>
             <Route path="/cria-chef" element={<CriaChef/>}/>
             <Route path='/meus-chefes' element={<ListagemChefs/>}/>
             <Route path='/receitas/:id' element={<ReceitaCompleta/>}/>
+            <Route path="/receitas/favoritas" element={<ReceitasFavoritas />} />
         </Routes>
     </BrowserRouter>
 </StrictMode>);
