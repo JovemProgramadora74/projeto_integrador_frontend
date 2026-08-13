@@ -11,7 +11,7 @@ function Index() {
     const [receitas, setReceitas] = useState([])
     useEffect(() => {
         async function carregaReceita() {
-           const resposta = await fetch("http://10.112.4.181/receitas");
+           const resposta = await fetch("http://senac47278/receitas");
            if(resposta.ok){
                setReceitas(await resposta.json());
            } else {
@@ -34,7 +34,7 @@ function Index() {
                 <div className="grid">
                     {receitas.map(receita => {
                         return <RecipeCard key={receita.id} titulo={receita.titulo} tagRestricao={receita.tagRestricao} tempo={receita.tempoPreparoMinutos}
-                                           imagem={receita.imagemUrl} dificuldade={receita.dificuldade} carb={receita.macros.carboidratosPorcentagem} gord={receita.macros.gordurasPorcentagem} prot={receita.macros.proteinaPorcentagem} link={receita.id} />
+                                           imagem={receita.imagemUrl} dificuldade={receita.dificuldade} carb={receita.macros.carboidratosPorcentagem} gord={receita.macros.gordurasPorcentagem} prot={receita.macros.proteinaPorcentagem} link={"receitas/" + receita.id} />
                     })}
                 </div>
             </div>
