@@ -16,8 +16,6 @@ function ReceitasFavoritas() {
                     const dados = await resposta.json();
                     console.log(dados);
                     setReceitas(dados.receitas);
-                } else {
-                    alert("O servidor backend esta offline!");
                 }
             } catch (error) {
                 console.error(error);
@@ -32,15 +30,24 @@ function ReceitasFavoritas() {
 
         <main className="container receitas-favoritas">
             <h1>Receitas Favoritas</h1>
-            <div className="grid">
-            {
-                receitas.map(receita => <RecipeCard titulo={receita.titulo} imagem={receita.imagemUrl}
-                                                    tagRestricao={receita.tagRestricao}
-                                                    tempo={receita.tempoPreparoMinutos}
-                                                    dificuldade={receita.dificuldade}/>)
-
-            }
-            </div>
+            {receitas.length === 0 ? (
+                <p className="mensagem-vazio">
+                    Você ainda não curtiu nenhuma receita.
+                </p>
+            ) : (
+                <div className="grid">
+                    {receitas.map((receita) => (
+                        <RecipeCard
+                            key={receita.id}
+                            dificuldade={receita.dificuldade}
+                            imagem={receita.imagemUrl}
+                            tagRestricao={receita.tagRestricao}
+                            tempo={receita.tempoPreparoMinutos}
+                            titulo={receita.titulo}
+                        />
+                    ))}
+                </div>
+            )}
         </main>
 
         <Footer/>
