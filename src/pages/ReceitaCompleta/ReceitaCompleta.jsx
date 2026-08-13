@@ -8,19 +8,38 @@ import {Clock, Users, Gauge} from "lucide-react";
 function ReceitaCompleta() {
     const {id} = useParams();
     const [receita, setReceita] = useState(null)
+    const [carregando, setCarregando] = useState(true);
     useEffect(() => {
         async function carregaReceitaCompleta() {
-            const resposta = await fetch(`http://senac47278/receitas/${id}`);
-            if (resposta.ok) {
-                setReceita(await resposta.json());
-            } else {
-                alert("Receita não encontrada no servidor.");
+            try {
+                const resposta = await fetch(`http://senac47278.local/receitas/${id}`);
+                if (resposta.ok) {
+                    setReceita(await resposta.json());
+                } else {
+                    alert("Receita não encontrada no servidor.");
+                    setReceita(false);
+                }
+            } catch (error) {
+                console.error(error);
+                console.error("Erro de conexão com o servidor backend.");
                 setReceita(false);
+            } finally {
+                setCarregando(false);
             }
         }
 
         carregaReceitaCompleta();
     }, [id]);
+
+    if (carregando) {
+        return (
+            <>
+                <Header/>
+                <div className="container"><p>Carregando receita...</p></div>
+                <Footer/>
+            </>
+        );
+    }
 
     if (!receita) {
         return (
