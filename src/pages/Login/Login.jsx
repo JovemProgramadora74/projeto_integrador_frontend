@@ -5,11 +5,17 @@ function Login() {
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
 
+    const [carregando, setCarregando] = useState(false);
+    const [mensagemErro, setMensagemErro] = useState("");
+
     const handleLogin = async (event) => {
-        event.preventDefault(); // Impede o recarregamento da página
+        event.preventDefault();
+
+        setMensagemErro("");
+        setCarregando(true);
 
         try {
-            const resposta = await fetch("http://10.112.4.144/login", {
+            const resposta = await fetch("http:///login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -17,22 +23,23 @@ function Login() {
                 body: JSON.stringify({ email, senha })
             });
 
-            if (!resposta.ok) {
-                throw new Error(`Erro ${resposta.status}: ${resposta.statusText}`);
-            }
+            const dados = await resposta.json().catch(() => ({}));
 
-            const dados = await resposta.json();
+            if (!resposta.ok) {
+                throw new Error(dados.mensagem || `Erro ${resposta.status}: Credenciais incorretas ou falha no servidor.`);
+            }
 
             if (dados.token) {
                 localStorage.setItem("token", dados.token);
-                alert("Login realizado com sucesso!");
             } else {
-                alert("Token não encontrado na resposta do servidor.");
+                setMensagemErro("Token não encontrado na resposta do servidor.");
             }
 
         } catch (erro) {
             console.error("Erro ao realizar login:", erro);
-            alert("Não foi possível conectar ao backend ou as credenciais estão incorretas.");
+            setMensagemErro(erro.message || "Não foi possível conectar ao servidor.");
+        } finally {
+            setCarregando(false);
         }
     };
 
@@ -41,6 +48,12 @@ function Login() {
             <div className="login">
                 <h1 className="login-titulo">Bem-vindo de volta</h1>
                 <p className="login-subtitulo">Acesse sua conta para salvar receitas e acessar conteúdos exclusivos.</p>
+
+                {mensagemErro && (
+                    <p className="mensagem-erro" style={{ color: "#d9534f", marginBottom: "1rem", textAlign: "center" }}>
+                        {mensagemErro}
+                    </p>
+                )}
 
                 <form onSubmit={handleLogin}>
                     <div className="login-form-grupo">
@@ -51,6 +64,7 @@ function Login() {
                             placeholder="seu@email.com"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                            disabled={carregando}
                             required
                         />
                     </div>
@@ -63,21 +77,22 @@ function Login() {
                             placeholder="********"
                             value={senha}
                             onChange={(e) => setSenha(e.target.value)}
+                            disabled={carregando}
                             required
                         />
                     </div>
 
                     <div className="login-container">
                         <label className="custom-checkbox">
-                            <input type="checkbox" id="lembrar" name="lembrar"/>
+                            <input type="checkbox" id="lembrar" name="lembrar" disabled={carregando}/>
                             <span className="label-text">Lembrar de mim</span>
                         </label>
 
                         <a href="#" className="link">Esqueceu a senha?</a>
                     </div>
 
-                    <button type="submit" className="btn-entrar">
-                        Entrar na conta
+                    <button type="submit" className="btn-entrar" disabled={carregando}>
+                        {carregando ? "Entrando..." : "Entrar na conta"}
                     </button>
 
                     <p className="cadastrar-conta">
