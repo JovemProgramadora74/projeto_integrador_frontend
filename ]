@@ -1,0 +1,28 @@
+Merge branch 'main' of https://github.com/JovemProgramadora74/projeto_integrador_frontend into feat/cria-pagina-lista-chefs
+
+# Conflicts:
+#	src/main.jsx
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please run
+#	git update-ref -d MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch feat/cria-pagina-lista-chefs
+# Your branch is up to date with 'origin/feat/cria-pagina-lista-chefs'.
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	modified:   src/components/CardDestaqueChef/CardDestaqueChef.css
+#	modified:   src/components/RecipeCard/RecipeCard.css
+#	modified:   src/main.jsx
+#	new file:   src/pages/Index/Index.css
+#	new file:   src/pages/Index/Index.jsx
+#	modified:   src/pages/Login/Login.css
+#	modified:   src/pages/Login/Login.jsx
+#
