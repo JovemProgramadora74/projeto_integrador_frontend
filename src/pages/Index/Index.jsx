@@ -5,20 +5,20 @@ import FiltroCategorias from "../../components/FiltroCategorias/FiltroCategorias
 import RecipeCard from "../../components/RecipeCard/RecipeCard.jsx";
 import ChefDestaqueCard from "../../components/CardDestaqueChef/CardDestaqueChef.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 
 function Index() {
+    const [receitas, setReceitas] = useState([])
     useEffect(() => {
-        async function carregaStatusBackend() {
-            const resposta = await fetch("http://10.112.4.144/status");
-            if (resposta.ok) {
-                alert("O servidor backend está rodando!")
-            } else {
-                alert("O servidor backend está offline!")
-            }
+        async function carregaReceita() {
+           const resposta = await fetch("http://senac47278/receitas");
+           if(resposta.ok){
+               setReceitas(await resposta.json());
+           } else {
+               alert ("O servidor backend está offline!")
+           }
         }
-
-        carregaStatusBackend();
+        carregaReceita();
     }, []);
 
     return (
@@ -31,15 +31,12 @@ function Index() {
                     <h2>Receitas em destaque</h2>
                     <a>Ver todos →</a>
                 </div>
+
                 <div className="grid">
-                    <RecipeCard/>
-                    <RecipeCard/>
-                    <RecipeCard/>
-                    <RecipeCard/>
-                    <RecipeCard/>
-                    <RecipeCard/>
-                    <RecipeCard/>
-                    <RecipeCard/>
+                    {receitas.map(receita => {
+                        return <RecipeCard key={receita.id} titulo={receita.titulo} tagRestricao={receita.tagRestricao} tempo={receita.tempoPreparoMinutos}
+                                           imagem={receita.imagemUrl} dificuldade={receita.dificuldade} carb={receita.macros.carboidratosPorcentagem} gord={receita.macros.gordurasPorcentagem} prot={receita.macros.proteinaPorcentagem} link={"receitas/" + receita.id} />
+                    })}
                 </div>
             </div>
             <ChefDestaqueCard
