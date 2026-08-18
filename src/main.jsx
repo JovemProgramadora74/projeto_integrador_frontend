@@ -22,7 +22,7 @@ createRoot(document.getElementById('root')).render(<StrictMode>
             <Route path='/meus-chefes' element={<ListagemChefs/>}/>
             <Route path='/receitas/:id' element={<ReceitaCompleta/>}/>
             <Route path="/receitas/favoritas" element={<ReceitasFavoritas />} />
-            <Route path="/categoria" element={<Categoria />} />
+            <Route path="/categorias" element={<Categoria />} />
         </Routes>
     </BrowserRouter>
 </StrictMode>);
