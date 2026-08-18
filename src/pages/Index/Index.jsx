@@ -35,7 +35,6 @@ function Index() {
 
                 <div className="grid">
                     {receitas.map(receita => {
-
                         return <RecipeCard key={receita.id} titulo={receita.titulo} tagRestricao={receita.tagRestricao} tempo={receita.tempoPreparoMinutos}
                                            imagem={receita.imagemUrl} dificuldade={receita.dificuldade} carb={receita.macros.carboidratosPorcentagem} gord={receita.macros.gordurasPorcentagem} prot={receita.macros.proteinaPorcentagem} link={"receitas/" + receita.id} />
 
