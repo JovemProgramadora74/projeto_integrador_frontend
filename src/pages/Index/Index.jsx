@@ -20,6 +20,7 @@ function Index() {
         }
         carregaReceita();
     }, []);
+
     return (
         <>
             <Header/>
