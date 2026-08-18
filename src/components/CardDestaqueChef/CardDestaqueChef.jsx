@@ -1,4 +1,5 @@
 import "./CardDestaqueChef.css";
+import {Leaf} from "lucide-react";
 
 function ChefDestaqueCard(props) {
     return (
@@ -13,7 +14,10 @@ function ChefDestaqueCard(props) {
             </div>
 
             <div className="chef-destaque-card-content">
-                <h3 className="chef-destaque-title"> ESCOLHA DO CHEF</h3>
+                <div className="chef-destaque-card-badge-text">
+                    <Leaf size={16} />
+                    <h3 className="chef-destaque-card-badge-text">ESCOLHA DO CHEF</h3>
+                </div>
 
                 <h2 className="chef-destaque-subtitulo">Receita recomendada</h2>
 

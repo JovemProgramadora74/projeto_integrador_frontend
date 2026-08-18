@@ -4,7 +4,7 @@ function HeroRecipeCard() {
     return (
         <div className="hero-recipe-card">
             <img
-                src="https://placehold.co/1000x700"
+                src="https://chefcristinahaaland.com.br/wp-content/uploads/2020/12/chefcristinahaaland-Salada-Caesar-com-frango.jpg"
                 alt="Salada"
             />
 
