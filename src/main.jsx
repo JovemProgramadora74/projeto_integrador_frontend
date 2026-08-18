@@ -17,10 +17,10 @@ createRoot(document.getElementById('root')).render(<StrictMode>
             <Route path='/' element={<Index/>}/>
             <Route path='/login' element={<Login/>}/>
             <Route path='/cadastro' element={<Cadastro/>}/>
-            <Route path="/cria-chef" element={<CriaChef/>}/>
+            <Route path='/cria-chef' element={<CriaChef/>}/>
             <Route path='/meus-chefes' element={<ListagemChefs/>}/>
             <Route path='/receitas/:id' element={<ReceitaCompleta/>}/>
-            <Route path="/receitas/favoritas" element={<ReceitasFavoritas />} />
+            <Route path='/receitas/favoritas' element={<ReceitasFavoritas/>}/>
         </Routes>
     </BrowserRouter>
 </StrictMode>);

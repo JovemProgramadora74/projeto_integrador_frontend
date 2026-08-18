@@ -1,6 +1,9 @@
-import NutritionalBar from './NutritionalBar'
+import { useNavigate } from 'react-router-dom';
+import NutritionalBar from './NutritionalBar';
 
 function HeroRecipeCard() {
+    const navigate = useNavigate();
+
     return (
         <div className="hero-recipe-card">
             <img
@@ -39,7 +42,11 @@ function HeroRecipeCard() {
                 <NutritionalBar label="Proteína" value={42} color="#A14A2C"/>
                 <NutritionalBar label="Carboidratos" value={38} color="#D4A373"/>
                 <NutritionalBar label="Gorduras" value={20} color="#606C38"/>
-                <button className="btn-card-info">
+
+                <button
+                    className="btn-card-info"
+                    onClick={() => navigate('/categorias')}
+                >
                     Ver receita
                 </button>
             </div>
@@ -47,4 +54,4 @@ function HeroRecipeCard() {
     )
 }
 
-export default HeroRecipeCard
+export default HeroRecipeCard;
