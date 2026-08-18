@@ -15,7 +15,7 @@ function Login() {
         setCarregando(true);
 
         try {
-            const resposta = await fetch("http:///login", {
+            const resposta = await fetch("http://senac47278/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
