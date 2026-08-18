@@ -4,7 +4,7 @@ import { MessagesSquare} from "lucide-react";
 function BotaoChat() {
     async function enviarAlerta() {
         try {
-            const response = await fetch('http://10.112.4.144/alerta', {
+            const response = await fetch('http://senac47278/alerta', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
