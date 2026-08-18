@@ -23,7 +23,7 @@ function CriaChef() {
         };
 
         try {
-            const response = await fetch("http://10.112.4.144/status", {
+            const response = await fetch("http://senac47278/contato/cadastrar", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
