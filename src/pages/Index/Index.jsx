@@ -5,8 +5,21 @@ import FiltroCategorias from "../../components/FiltroCategorias/FiltroCategorias
 import RecipeCard from "../../components/RecipeCard/RecipeCard.jsx";
 import ChefDestaqueCard from "../../components/CardDestaqueChef/CardDestaqueChef.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
+import {useEffect} from "react";
 
 function Index() {
+
+    useEffect(() => {
+        async function carregaStatusBackend() {
+            const resposta = await fetch("http://10.112.4.144/status")
+            if (resposta.ok) {
+                alert("O servidor backend está rodando!")
+            } else {
+                alert("O servidor backend está offline!")
+            }
+        }
+        carregaStatusBackend()
+    }, []);
     return (
         <>
             <Header/>
