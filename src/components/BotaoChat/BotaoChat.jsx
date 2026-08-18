@@ -2,17 +2,29 @@ import "./BotaoChat.css";
 import { MessagesSquare } from "lucide-react";
 
 function BotaoChat() {
+    function pegarPosicao() {
+        let posicao;
+        navigator.geolocation.getCurrentPosition(position => {
+            posicao = position;
+        })
+        return posicao;
+    }
+
     async function enviarAlerta() {
         try {
-            const response = await fetch('http://10.112.4.144/alerta', {
+            const token = localStorage.getItem("token");
+            var posicoes = pegarPosicao();
+
+            const response = await fetch('http://senac47278.local/alerta', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({
-                    evento: 'alerta',
-                    origem: 'BotaoChat',
-                    timestamp: new Date().toISOString(),
+                    "latitude": posicoes.coords.latitude,
+                    "longitude": posicoes.coords.longitude,
+                    "precisaoGps": posicoes.coords.accuracy
                 }),
             });
 
