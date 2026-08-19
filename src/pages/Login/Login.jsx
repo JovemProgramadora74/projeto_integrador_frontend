@@ -1,12 +1,17 @@
-import { useState } from "react";
+import {useState} from "react";
+import {useNavigate, Link} from "react-router-dom"; // Assumindo react-router-dom
 import "./Login.css";
+import {fetchApi} from "../../servicos/api.js";
 
 function Login() {
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
+    const [lembrar, setLembrar] = useState(false);
 
     const [carregando, setCarregando] = useState(false);
     const [mensagemErro, setMensagemErro] = useState("");
+
+    const navigate = useNavigate();
 
     const handleLogin = async (event) => {
         event.preventDefault();
@@ -15,29 +20,29 @@ function Login() {
         setCarregando(true);
 
         try {
-            const resposta = await fetch("http://senac47278/login", {
+            const dados = await fetchApi("/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({ email, senha })
+                body: JSON.stringify({email, senha, lembrar})
             });
-
-            const dados = await resposta.json().catch(() => ({}));
-
-            if (!resposta.ok) {
-                throw new Error(dados.mensagem || `Erro ${resposta.status}: Credenciais incorretas ou falha no servidor.`);
-            }
 
             if (dados.token) {
                 localStorage.setItem("token", dados.token);
+                navigate("/"); // Redireciona para a página principal após sucesso
             } else {
-                setMensagemErro("Token não encontrado na resposta do servidor.");
+                setMensagemErro("Token não retornado pelo servidor.");
             }
 
         } catch (erro) {
             console.error("Erro ao realizar login:", erro);
-            setMensagemErro(erro.message || "Não foi possível conectar ao servidor.");
+
+            if (erro.status === 401) {
+                setMensagemErro(erro.message || "E-mail ou senha incorretos.");
+            } else {
+                setMensagemErro("Não foi possível conectar ao servidor.");
+            }
         } finally {
             setCarregando(false);
         }
@@ -50,7 +55,7 @@ function Login() {
                 <p className="login-subtitulo">Acesse sua conta para salvar receitas e acessar conteúdos exclusivos.</p>
 
                 {mensagemErro && (
-                    <p className="mensagem-erro" style={{ color: "#d9534f", marginBottom: "1rem", textAlign: "center" }}>
+                    <p className="mensagem-erro">
                         {mensagemErro}
                     </p>
                 )}
@@ -65,6 +70,7 @@ function Login() {
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             disabled={carregando}
+                            autoComplete="email"
                             required
                         />
                     </div>
@@ -78,17 +84,25 @@ function Login() {
                             value={senha}
                             onChange={(e) => setSenha(e.target.value)}
                             disabled={carregando}
+                            autoComplete="current-password"
                             required
                         />
                     </div>
 
                     <div className="login-container">
                         <label className="custom-checkbox">
-                            <input type="checkbox" id="lembrar" name="lembrar" disabled={carregando}/>
+                            <input
+                                type="checkbox"
+                                id="lembrar"
+                                name="lembrar"
+                                checked={lembrar}
+                                onChange={(e) => setLembrar(e.target.checked)}
+                                disabled={carregando}
+                            />
                             <span className="label-text">Lembrar de mim</span>
                         </label>
 
-                        <a href="#" className="link">Esqueceu a senha?</a>
+                        <Link to="/recuperar-senha" className="link">Esqueceu a senha?</Link>
                     </div>
 
                     <button type="submit" className="btn-entrar" disabled={carregando}>
@@ -96,7 +110,7 @@ function Login() {
                     </button>
 
                     <p className="cadastrar-conta">
-                        Ainda não tem uma conta? <a href="#" className="link">Cadastre-se</a>
+                        Ainda não tem uma conta? <Link to="/cadastrar" className="link">Cadastre-se</Link>
                     </p>
                 </form>
             </div>
