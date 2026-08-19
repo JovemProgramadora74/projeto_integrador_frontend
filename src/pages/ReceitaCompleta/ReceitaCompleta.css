@@ -1,0 +1,253 @@
+.receita-completa {
+    padding: 80px;
+}
+
+.receita-topo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+}
+
+.receita-info {
+    flex: 1 1 320px;
+}
+
+.receita-info h1 {
+    font-family: var(--fonte-titulo);
+    font-size: 36px;
+    color: var(--primaria);
+    line-height: 1.2;
+    margin-bottom: 24px;
+    max-width: 450px;
+}
+
+.receita-meta {
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--texto-suave);
+}
+
+.receita-imagem {
+    flex: 1 1 400px;
+    max-width: 520px;
+    height: 320px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.receita-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.receita-corpo {
+    display: flex;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+
+.receita-corpo h2 {
+    font-family: var(--fonte-titulo);
+    color: var(--primaria);
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.receita-ingredientes {
+    flex: 1 1 260px;
+}
+
+.receita-ingredientes ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.receita-ingredientes li {
+    position: relative;
+    padding-left: 20px;
+    color: var(--texto-principal);
+    line-height: 1.4;
+}
+
+.receita-ingredientes li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background-color: var(--primaria);
+}
+
+.receita-modo-preparo {
+    flex: 2 1 420px;
+    max-width: 50%;
+}
+
+.receita-modo-preparo ol {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.receita-modo-preparo li {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.passo-numero {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: var(--primaria);
+    color: var(--texto-inverso);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.receita-modo-preparo p {
+    margin: 0;
+    color: var(--texto-principal);
+    line-height: 1.6;
+}
+
+.receita-nao-encontrada {
+    padding: 80px 20px;
+    text-align: center;
+    color: var(--texto-suave);
+}
+
+@media (max-width: 1100px) {
+    .receita-completa {
+        padding: 48px 40px;
+    }
+
+    .receita-info {
+        flex: none
+    }
+
+    .receita-corpo {
+        gap: 40px;
+    }
+}
+
+@media (max-width: 900px) {
+    .receita-topo {
+        flex-direction: column-reverse;
+        gap: 24px;
+    }
+
+    .receita-info {
+        flex: none
+    }
+
+    .receita-info h1 {
+        max-width: 100%;
+    }
+
+    .receita-imagem {
+        max-width: 100%;
+        width: 100%;
+        height: 280px;
+    }
+
+    .receita-corpo {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .receita-modo-preparo {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .receita-completa {
+        padding: 32px 20px;
+    }
+
+    .receita-info {
+        flex: none
+    }
+
+    .receita-info h1 {
+        font-size: 28px;
+        margin-bottom: 16px;
+    }
+
+    .receita-meta {
+        gap: 16px;
+    }
+
+    .receita-imagem {
+        height: 220px;
+        border-radius: 16px;
+    }
+
+    .receita-corpo {
+        gap: 32px;
+    }
+
+    .receita-corpo h2 {
+        font-size: 20px;
+        margin-bottom: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .receita-completa {
+        padding: 24px 16px;
+    }
+
+    .receita-info {
+        flex: none
+    }
+
+    .receita-info h1 {
+        font-size: 24px;
+    }
+
+    .receita-meta {
+        gap: 12px 20px;
+    }
+
+    .meta-item {
+        font-size: 13px;
+    }
+
+    .receita-imagem {
+        height: 180px;
+    }
+
+    .receita-modo-preparo li {
+        gap: 12px;
+    }
+
+    .passo-numero {
+        width: 24px;
+        height: 24px;
+        font-size: 13px;
+    }
+}
