@@ -7,7 +7,7 @@ export default function NavLinks() {
     // Categorias incluídas com rota pendente ('#')
     const navItems = [
         { label: 'Receitas', path: '/' },
-        { label: 'Categorias', path: '#' },
+        { label: 'Categorias', path: '/categorias' },
         { label: 'Chefs', path: '/meus-chefes' },
         { label: 'Favoritos', path: '/receitas/favoritas' },
     ];
