@@ -1,21 +1,33 @@
-import { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import './NavLinks.css';
 
 export default function NavLinks() {
-    const [activeLink, setActiveLink] = useState('Receitas');
-    const links = ['Receitas', 'Categorias', 'Chefs', 'Favoritos'];
+    const location = useLocation();
+
+    // Categorias incluídas com rota pendente ('#')
+    const navItems = [
+        { label: 'Receitas', path: '/' },
+        { label: 'Categorias', path: '/categorias' },
+        { label: 'Chefs', path: '/meus-chefes' },
+        { label: 'Favoritos', path: '/receitas/favoritas' },
+    ];
 
     return (
         <nav className="nav-container">
-            {links.map((link) => (
-                <a
-                    key={link}
-                    href={`#${link.toLowerCase()}`}
-                    className={`header-nav-item ${activeLink === link ? 'active' : ''}`}
-                    onClick={() => setActiveLink(link)}
+            {navItems.map((item) => (
+                <Link
+                    key={item.label}
+                    to={item.path}
+                    className={`header-nav-item ${location.pathname === item.path ? 'active' : ''}`}
+                    onClick={(e) => {
+                        // Evita o comportamento padrão se a rota ainda for '#'
+                        if (item.path === '#') {
+                            e.preventDefault();
+                        }
+                    }}
                 >
-                    {link}
-                </a>
+                    {item.label}
+                </Link>
             ))}
         </nav>
     );
