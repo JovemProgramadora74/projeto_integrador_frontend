@@ -4,11 +4,11 @@ import FavoriteButton from "./FavoriteButton.jsx";
 import BarraMacro from "./BarraMacro.jsx";
 import { Clock, Gauge } from "lucide-react";
 
-function RecipeCard({titulo, imagem, tagRestricao, tempo, dificuldade, prot, carb, gord, link, key}) {
+function RecipeCard({titulo, imagem, tagRestricao, tempo, dificuldade, prot, carb, gord, link, receitaId}) {
     return (
         <div className="recipe-card">
             <Badge etiqueta={tagRestricao}/>
-            <FavoriteButton receitaId={key} titulo={titulo} />
+            <FavoriteButton receitaId={receitaId} titulo={titulo} />
 
             <div className="imagem-container">
                 <img src= {imagem}

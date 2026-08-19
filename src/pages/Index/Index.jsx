@@ -5,8 +5,8 @@ import FiltroCategorias from "../../components/FiltroCategorias/FiltroCategorias
 import RecipeCard from "../../components/RecipeCard/RecipeCard.jsx";
 import ChefDestaqueCard from "../../components/CardDestaqueChef/CardDestaqueChef.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
-import { useEffect, useState } from "react";
-import { fetchApi } from "../../servicos/api.js";
+import {useEffect, useState} from "react";
+import {fetchApi} from "../../servicos/api.js";
 
 function Index() {
     const [receitas, setReceitas] = useState([]);
@@ -18,7 +18,7 @@ function Index() {
 
         async function carregaReceita() {
             try {
-                const dados = await fetchApi("/receitas", { signal: controller.signal });
+                const dados = await fetchApi("/receitas", {signal: controller.signal});
 
                 if (Array.isArray(dados)) {
                     setReceitas(dados);
@@ -41,9 +41,9 @@ function Index() {
 
     return (
         <>
-            <Header />
-            <HeroSection />
-            <FiltroCategorias />
+            <Header/>
+            <HeroSection/>
+            <FiltroCategorias/>
 
             <div className="container">
                 <div className="highlights-header">
@@ -66,6 +66,7 @@ function Index() {
                         {receitas.map(receita => (
                             <RecipeCard
                                 key={receita.id}
+                                receitaId={receita.id}
                                 titulo={receita.titulo}
                                 tagRestricao={receita.tagRestricao}
                                 tempo={receita.tempoPreparoMinutos}
@@ -82,9 +83,8 @@ function Index() {
             </div>
 
             <ChefDestaqueCard
-                imagem="https://socialbauru.com.br/wp-content/uploads/2024/05/premioimpera2019-principal-marchante-1024x683-1.jpg"
-            />
-            <Footer />
+                imagem="https://socialbauru.com.br/wp-content/uploads/2024/05/premioimpera2019-principal-marchante-1024x683-1.jpg"/>
+            <Footer/>
         </>
     );
 }
