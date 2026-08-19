@@ -1,10 +1,10 @@
-import "./BotaoChat.css"
-import { MessagesSquare} from "lucide-react";
+import "./BotaoChat.css";
+import { MessagesSquare } from "lucide-react";
 
 function BotaoChat() {
     async function enviarAlerta() {
         try {
-            const response = await fetch('http://senac47278/alerta', {
+            const response = await fetch('http://10.112.4.144/alerta', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -27,13 +27,12 @@ function BotaoChat() {
     }
 
     return (
-        <>
-            <button
-                className="botao-chat"
-                onDoubleClick={enviarAlerta}>
-                <MessagesSquare/>
-            </button>
-        </>)
+        <button
+            className="botao-chat"
+            onDoubleClick={enviarAlerta}>
+            <MessagesSquare/>
+        </button>
+    );
 }
 
-export default BotaoChat
+export default BotaoChat;
