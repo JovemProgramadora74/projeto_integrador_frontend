@@ -92,6 +92,15 @@ body {
     font-size: 1.1rem;
 }
 
+.mensagem-sucesso {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 1rem 0;
+    color: #53d32f;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
 @media (max-width: 1100px) {
     .grid {
         grid-template-columns: repeat(2, 1fr);
