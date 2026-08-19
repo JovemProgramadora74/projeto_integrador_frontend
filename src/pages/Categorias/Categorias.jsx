@@ -1,38 +1,42 @@
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import "./Categorias.css";
 import Header from "../../components/Header/Header.jsx";
 import FiltroCategorias from "../../components/FiltroCategorias/FiltroCategorias.jsx";
 import RecipeCard from "../../components/RecipeCard/RecipeCard.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
+import { fetchApi } from "../../servicos/api.js";
 
 function Categorias() {
     const [categoriaSelecionada, setCategoriaSelecionada] = useState("Todas");
-
-    const [receitas, setReceitas] = useState([])
+    const [receitas, setReceitas] = useState([]);
     const [carregando, setCarregando] = useState(true);
     const [erro, setErro] = useState(null);
+
     useEffect(() => {
+        const controller = new AbortController();
+
         async function carregarReceitas() {
             try {
-                const resposta = await fetch("http://senac47278/receitas");
-                if (!resposta.ok) {
-                    throw new Error("O servidor backend está offline!")
-                }
+                const dados = await fetchApi("/receitas", { signal: controller.signal });
 
-                setReceitas(await resposta.json());
+                if (Array.isArray(dados)) {
+                    setReceitas(dados);
+                    setCarregando(false);
+                } else {
+                    throw new Error("Formato de resposta inválido.");
+                }
             } catch (err) {
-                console.error(err);
-                setErro("Não foi possível conectar ao servidor backend.");
-            } finally {
-                setCarregando(false);
+                if (err.name !== "AbortError") {
+                    setErro("Não foi possível carregar as receitas.");
+                    setCarregando(false);
+                }
             }
         }
 
         carregarReceitas();
-    }, []);
 
-    if (carregando) return <p>Carregando receitas...</p>;
-    if (erro) return <p style={{ color: 'red' }}>{erro}</p>;
+        return () => controller.abort();
+    }, []);
 
     const receitasFiltradas = categoriaSelecionada === "Todas"
         ? receitas
@@ -40,27 +44,42 @@ function Categorias() {
 
     return (
         <>
-            <Header/>
+            <Header />
             <FiltroCategorias
                 categoriaSelecionada={categoriaSelecionada}
                 onSelecionarCategoria={setCategoriaSelecionada}
             />
             <div className="container">
                 <div className="grid">
-                    {receitasFiltradas.length > 0 ? (
+                    {carregando && (
+                        <div className="spinner-container">
+                            <div className="spinner" role="status">
+                                <span className="sr-only">Carregando receitas...</span>
+                            </div>
+                        </div>
+                    )}
+
+                    {erro && !carregando && <p className="mensagem-erro">{erro}</p>}
+
+                    {!carregando && !erro && receitasFiltradas.length > 0 && (
                         receitasFiltradas.map((receita) => (
-                            <RecipeCard key={receita.id} titulo={receita.titulo} tagRestricao={receita.tagRestricao}
-                                        tempo={receita.tempoPreparoMinutos} imagem={receita.imagemUrl}
-                                        dificuldade={receita.dificuldade} carb={receita.macros.carboidratosPorcentagem}
-                                        gord={receita.macros.gordurasPorcentagem}
-                                        prot={receita.macros.proteinaPorcentagem} link={"receitas/" + receita.id}/>
+                            <RecipeCard
+                                key={receita.id}
+                                titulo={receita.titulo}
+                                tagRestricao={receita.tagRestricao}
+                                tempo={receita.tempoPreparoMinutos}
+                                imagem={receita.imagemUrl}
+                                dificuldade={receita.dificuldade}
+                                carb={receita.macros?.carboidratosPorcentagem}
+                                gord={receita.macros?.gordurasPorcentagem}
+                                prot={receita.macros?.proteinaPorcentagem}
+                                link={`/receitas/${receita.id}`}
+                            />
                         ))
-                    ) : (
-                        <p>Nenhuma receita encontrada para essa categoria.</p>
                     )}
                 </div>
             </div>
-            <Footer/>
+            <Footer />
         </>
     );
 }

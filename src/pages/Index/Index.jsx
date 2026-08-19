@@ -5,47 +5,86 @@ import FiltroCategorias from "../../components/FiltroCategorias/FiltroCategorias
 import RecipeCard from "../../components/RecipeCard/RecipeCard.jsx";
 import ChefDestaqueCard from "../../components/CardDestaqueChef/CardDestaqueChef.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
+import { fetchApi } from "../../servicos/api.js";
 
 function Index() {
-    const [receitas, setReceitas] = useState([])
+    const [receitas, setReceitas] = useState([]);
+    const [erro, setErro] = useState(null);
+    const [carregando, setCarregando] = useState(true);
+
     useEffect(() => {
+        const controller = new AbortController();
+
         async function carregaReceita() {
+            try {
+                const dados = await fetchApi("/receitas", { signal: controller.signal });
 
-           const resposta = await fetch("http://senac47278/receitas");
-
-           if(resposta.ok){
-               setReceitas(await resposta.json());
-           } else {
-               alert ("O servidor backend está offline!")
-           }
+                if (Array.isArray(dados)) {
+                    setReceitas(dados);
+                    setCarregando(false);
+                } else {
+                    throw new Error("Formato de resposta inválido.");
+                }
+            } catch (err) {
+                if (err.name !== "AbortError") {
+                    setErro("Não foi possível carregar as receitas");
+                    setCarregando(false);
+                }
+            }
         }
+
         carregaReceita();
+
+        return () => controller.abort();
     }, []);
 
     return (
         <>
-            <Header/>
-            <HeroSection/>
-            <FiltroCategorias/>
+            <Header />
+            <HeroSection />
+            <FiltroCategorias />
+
             <div className="container">
                 <div className="highlights-header">
                     <h2>Receitas em destaque</h2>
-                    <a>Ver todos →</a>
+                    <a className="link" href="/receitas">Ver todos →</a>
                 </div>
 
-                <div className="grid">
-                    {receitas.map(receita => {
+                {carregando && (
+                    <div className="spinner-container">
+                        <div className="spinner" role="status">
+                            <span className="sr-only">Carregando receitas...</span>
+                        </div>
+                    </div>
+                )}
 
-                        return <RecipeCard key={receita.id} titulo={receita.titulo} tagRestricao={receita.tagRestricao} tempo={receita.tempoPreparoMinutos}
-                                           imagem={receita.imagemUrl} dificuldade={receita.dificuldade} carb={receita.macros.carboidratosPorcentagem} gord={receita.macros.gordurasPorcentagem} prot={receita.macros.proteinaPorcentagem} link={"receitas/" + receita.id} />
+                {erro && !carregando && <p className="mensagem-erro">{erro}</p>}
 
-                    })}
-                </div>
+                {!carregando && !erro && (
+                    <div className="grid">
+                        {receitas.map(receita => (
+                            <RecipeCard
+                                key={receita.id}
+                                titulo={receita.titulo}
+                                tagRestricao={receita.tagRestricao}
+                                tempo={receita.tempoPreparoMinutos}
+                                imagem={receita.imagemUrl}
+                                dificuldade={receita.dificuldade}
+                                carb={receita.macros?.carboidratosPorcentagem}
+                                gord={receita.macros?.gordurasPorcentagem}
+                                prot={receita.macros?.proteinaPorcentagem}
+                                link={`/receitas/${receita.id}`}
+                            />
+                        ))}
+                    </div>
+                )}
             </div>
+
             <ChefDestaqueCard
-                imagem="https://socialbauru.com.br/wp-content/uploads/2024/05/premioimpera2019-principal-marchante-1024x683-1.jpg"/>
-            <Footer/>
+                imagem="https://socialbauru.com.br/wp-content/uploads/2024/05/premioimpera2019-principal-marchante-1024x683-1.jpg"
+            />
+            <Footer />
         </>
     );
 }
