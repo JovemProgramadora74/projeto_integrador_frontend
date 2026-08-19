@@ -5,7 +5,7 @@ import HeroRecipeCard from "./HeroRecipeCard.jsx";
 
 function HeroSection() {
     return (
-        <section  className="hero-section">
+        <section className="hero-section container">
             <HeroText/>
             <HeroRecipeCard/>
         </section>

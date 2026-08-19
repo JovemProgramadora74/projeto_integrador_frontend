@@ -1,94 +1,133 @@
-import { useState } from 'react';
 import "./CriaChef.css";
 import Header from "../../components/Header/Header.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
+import { useState } from "react";
+import { fetchApi } from "../../servicos/api.js";
 
 function CriaChef() {
-    const [nome, setNome] = useState('');
-    const [vinculo, setVinculo] = useState('');
-    const [email, setEmail] = useState('');
-    const [telefone, setTelefone] = useState('');
+    const [nome, setNome] = useState("");
+    const [vinculo, setVinculo] = useState("");
+    const [email, setEmail] = useState("");
+    const [celular, setCelular] = useState("");
 
-    const handleCriarChef = async (e) => {
+    const [enviando, setEnviando] = useState(false);
+    const [mensagemErro, setMensagemErro] = useState(null);
+    const [mensagemSucesso, setMensagemSucesso] = useState(null);
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const token = localStorage.getItem('token');
+        setEnviando(true);
+        setMensagemErro(null);
+        setMensagemSucesso(null);
+
+        const token = localStorage.getItem("token");
+
+        const dadosChef = {
+            nome,
+            vinculo,
+            email,
+            celular,
+        };
 
         try {
-            const response = await fetch('http://localhost:3000/chefs', {
+            await fetchApi("/contato/cadastrar", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
+                    ...(token && { 'Authorization': `Bearer ${token}` })
                 },
-                body: JSON.stringify({ nome, vinculo, email, telefone })
+                body: JSON.stringify(dadosChef)
             });
 
-            if (response.status === 201) {
-                alert('Chef cadastrado com sucesso!');
-                setNome('');
-                setVinculo('');
-                setEmail('');
-                setTelefone('');
-            } else if (response.status === 400) {
-                alert('Erro ao cadastrar. Verifique os dados enviados.');
-            }
+            setMensagemSucesso("Chef cadastrado com sucesso!");
+            setNome("");
+            setVinculo("");
+            setEmail("");
+            setCelular("");
+
         } catch (error) {
-            console.error('Erro de conexão com a API local:', error);
+            console.error("Erro ao cadastrar chef:", error);
+
+            if (error.status === 400) {
+                setMensagemErro(error.message || "Dados inválidos. Verifique os campos.");
+            } else {
+                setMensagemErro("Não foi possível conectar ao servidor.");
+            }
+        } finally {
+            setEnviando(false);
         }
     };
 
     return (
         <>
-            <Header/>
+            <Header />
             <div className="container">
-                <form onSubmit={handleCriarChef} className="form-container">
-                    <h1 className="form-titulo"> Novo chef </h1>
-                    <p className="form-subtitulo"> Adicione as informações de um novo chef.</p>
+                <form className="form-container" onSubmit={handleSubmit}>
+                    <h1 className="form-titulo">Novo chef</h1>
+                    <p className="form-subtitulo">Adicione as informações de um novo chef.</p>
 
-                    <label className="form-grupo">Nome
+                    {mensagemSucesso && (
+                        <p className="mensagem-sucesso">{mensagemSucesso}</p>
+                    )}
+
+                    {mensagemErro && (
+                        <p className="mensagem-erro">{mensagemErro}</p>
+                    )}
+
+                    <label className="form-grupo">
+                        Nome
                         <input
                             type="text"
+                            placeholder="Nome do chef"
                             value={nome}
                             onChange={(e) => setNome(e.target.value)}
-                            placeholder="Nome do chef"
                             required
                         />
                     </label>
 
-                    <label className="form-grupo">Vinculo
+                    <label className="form-grupo">
+                        Vínculo
                         <input
                             type="text"
+                            placeholder="Ex: Amigo, Convidado"
                             value={vinculo}
                             onChange={(e) => setVinculo(e.target.value)}
-                            placeholder="Amigo"
                             required
                         />
                     </label>
 
-                    <label className="form-grupo">Email
+                    <label className="form-grupo">
+                        Email
                         <input
                             type="email"
+                            placeholder="chef@email.com"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            placeholder="chef@email.com"
                             required
                         />
                     </label>
 
-                    <label className="form-grupo">Numero de celular
+                    <label className="form-grupo">
+                        Número de celular
                         <input
-                            type="text"
-                            value={telefone}
-                            onChange={(e) => setTelefone(e.target.value)}
+                            type="tel"
                             placeholder="(00) 00000-0000"
+                            value={celular}
+                            onChange={(e) => setCelular(e.target.value)}
                             required
                         />
                     </label>
 
-                    <button type="submit" className="btn-cadastrar">Cadastrar chef</button>
+                    <button
+                        type="submit"
+                        className="btn-cadastrar"
+                        disabled={enviando}
+                    >
+                        {enviando ? "Cadastrando..." : "Cadastrar chef"}
+                    </button>
                 </form>
             </div>
-            <Footer/>
+            <Footer />
         </>
     );
 }
