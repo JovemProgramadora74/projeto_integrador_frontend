@@ -12,6 +12,7 @@ function RecipeCard({titulo, imagem, tagRestricao, tempo, dificuldade, prot, car
 
             <div className="imagem-container">
                 <img src= {imagem}
+
                      alt= {titulo}/>
 
             </div>

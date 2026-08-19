@@ -1,22 +1,21 @@
-import './Index.css'
+import { useEffect, useState } from "react";
+import "./Categorias.css";
 import Header from "../../components/Header/Header.jsx";
-import HeroSection from "../../components/Hero/HeroSection.jsx";
 import FiltroCategorias from "../../components/FiltroCategorias/FiltroCategorias.jsx";
 import RecipeCard from "../../components/RecipeCard/RecipeCard.jsx";
-import ChefDestaqueCard from "../../components/CardDestaqueChef/CardDestaqueChef.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
-import { useEffect, useState } from "react";
 import { fetchApi } from "../../servicos/api.js";
 
-function Index() {
+function Categorias() {
+    const [categoriaSelecionada, setCategoriaSelecionada] = useState("Todas");
     const [receitas, setReceitas] = useState([]);
-    const [erro, setErro] = useState(null);
     const [carregando, setCarregando] = useState(true);
+    const [erro, setErro] = useState(null);
 
     useEffect(() => {
         const controller = new AbortController();
 
-        async function carregaReceita() {
+        async function carregarReceitas() {
             try {
                 const dados = await fetchApi("/receitas", { signal: controller.signal });
 
@@ -28,42 +27,42 @@ function Index() {
                 }
             } catch (err) {
                 if (err.name !== "AbortError") {
-                    setErro("Não foi possível carregar as receitas");
+                    setErro("Não foi possível carregar as receitas.");
                     setCarregando(false);
                 }
             }
         }
 
-        carregaReceita();
+        carregarReceitas();
 
         return () => controller.abort();
     }, []);
 
+    const receitasFiltradas = categoriaSelecionada === "Todas"
+        ? receitas
+        : receitas.filter((receita) => receita.categoria === categoriaSelecionada);
+
     return (
         <>
             <Header />
-            <HeroSection />
-            <FiltroCategorias />
-
+            <FiltroCategorias
+                categoriaSelecionada={categoriaSelecionada}
+                onSelecionarCategoria={setCategoriaSelecionada}
+            />
             <div className="container">
-                <div className="highlights-header">
-                    <h2>Receitas em destaque</h2>
-                    <a className="link" href="/receitas">Ver todos →</a>
-                </div>
-
-                {carregando && (
-                    <div className="spinner-container">
-                        <div className="spinner" role="status">
-                            <span className="sr-only">Carregando receitas...</span>
+                <div className="grid">
+                    {carregando && (
+                        <div className="spinner-container">
+                            <div className="spinner" role="status">
+                                <span className="sr-only">Carregando receitas...</span>
+                            </div>
                         </div>
-                    </div>
-                )}
+                    )}
 
-                {erro && !carregando && <p className="mensagem-erro">{erro}</p>}
+                    {erro && !carregando && <p className="mensagem-erro">{erro}</p>}
 
-                {!carregando && !erro && (
-                    <div className="grid">
-                        {receitas.map(receita => (
+                    {!carregando && !erro && receitasFiltradas.length > 0 && (
+                        receitasFiltradas.map((receita) => (
                             <RecipeCard
                                 key={receita.id}
                                 titulo={receita.titulo}
@@ -76,17 +75,13 @@ function Index() {
                                 prot={receita.macros?.proteinaPorcentagem}
                                 link={`/receitas/${receita.id}`}
                             />
-                        ))}
-                    </div>
-                )}
+                        ))
+                    )}
+                </div>
             </div>
-
-            <ChefDestaqueCard
-                imagem="https://socialbauru.com.br/wp-content/uploads/2024/05/premioimpera2019-principal-marchante-1024x683-1.jpg"
-            />
             <Footer />
         </>
     );
 }
 
-export default Index;
+export default Categorias;
