@@ -1,21 +1,22 @@
-import { useState } from "react";
 import "./FiltroCategorias.css"
 import ItemCategoria from "../ItemCategoria/ItemCategoria.jsx";
-import { LayoutGrid, UtensilsCrossed, Cake, Salad, Croissant, Coffee, Soup, FlameKindling } from "lucide-react";
+import {
+    WheatOff,
+    MilkOff, Leaf, Dumbbell, Wheat, Scale, Vegan, Milk
+} from "lucide-react";
 
 const Categorias = [
-    { label: "Todas", icon: <LayoutGrid /> },
-    { label: "Massas", icon: <UtensilsCrossed /> },
-    { label: "Sobremesa", icon: <Cake /> },
-    { label: "Saladas", icon: <Salad /> },
-    { label: "Pães", icon: <Croissant /> },
-    { label: "Café da Manhã", icon: <Coffee /> },
-    { label: "Sopas", icon: <Soup /> },
-    { label: "Grelhados", icon: <FlameKindling /> },
+    {label: "Contém Glúten", icon: <Wheat/>},
+    {label: "Low Carb", icon: <Scale/>},
+    {label: "Sem Lactose", icon: <MilkOff/>},
+    {label: "Sem Glúten", icon: <WheatOff/>},
+    {label: "Vegano", icon: <Vegan/>},
+    {label: "Alto Teor Proteico", icon: <Dumbbell/>},
+    {label: "Vegetariano", icon: <Leaf/>},
+    {label: "Contém Lactose", icon: <Milk/>},
 ];
 
-function FiltroCategorias() {
-    const [categoriaSelecionada, setCategoriaSelecionada] = useState("Todas");
+function FiltroCategorias({categoriaSelecionada, onSelecionarCategoria}) {
 
     return (
         <div className="categorias-header">
@@ -28,7 +29,7 @@ function FiltroCategorias() {
                         label={cat.label}
                         icon={cat.icon}
                         ativo={categoriaSelecionada === cat.label}
-                        onClick={() => setCategoriaSelecionada(cat.label)}
+                        onClick={() => onSelecionarCategoria(cat.label)}
                     />
                 ))}
             </div>
