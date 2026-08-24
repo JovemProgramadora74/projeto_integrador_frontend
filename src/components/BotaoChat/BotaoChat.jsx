@@ -3,17 +3,15 @@ import { MessagesSquare } from "lucide-react";
 
 function BotaoChat() {
     function pegarPosicao() {
-        let posicao;
-        navigator.geolocation.getCurrentPosition(position => {
-            posicao = position;
-        })
-        return posicao;
+        return new Promise((resolve, reject) => {
+            navigator.geolocation.getCurrentPosition(resolve, reject);
+        });
     }
 
     async function enviarAlerta() {
         try {
             const token = localStorage.getItem("token");
-            var posicoes = pegarPosicao();
+            const posicao = await pegarPosicao();
 
             const response = await fetch('http://senac47278.local/alerta', {
                 method: 'POST',
@@ -22,9 +20,9 @@ function BotaoChat() {
                     'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({
-                    "latitude": posicoes.coords.latitude,
-                    "longitude": posicoes.coords.longitude,
-                    "precisaoGps": posicoes.coords.accuracy
+                    latitude: posicao.coords.latitude,
+                    longitude: posicao.coords.longitude,
+                    precisaoGps: posicao.coords.accuracy
                 }),
             });
 
