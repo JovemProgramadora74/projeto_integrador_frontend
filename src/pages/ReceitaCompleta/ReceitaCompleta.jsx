@@ -5,6 +5,7 @@ import Header from "../../components/Header/Header.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
 import { Clock, Users, Gauge } from "lucide-react";
 import { fetchApi } from "../../servicos/api.js";
+import BotaoChat from "../../components/BotaoChat/BotaoChat.jsx";
 
 function ReceitaCompleta() {
     const { id } = useParams();
@@ -123,6 +124,7 @@ function ReceitaCompleta() {
                     </>
                 )}
             </div>
+            <BotaoChat />
             <Footer />
         </>
     );
