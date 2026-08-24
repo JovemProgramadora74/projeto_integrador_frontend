@@ -36,7 +36,8 @@
 
 .form-grupo input[type="email"],
 .form-grupo input[type="text"],
-.form-grupo input[type="password"] {
+.form-grupo input[type="password"],
+.form-grupo input[type="tel"]{
     width: 100%;
     padding: 0.875rem 1rem;
     border: 1px solid #e6e0d8;

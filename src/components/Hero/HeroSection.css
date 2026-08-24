@@ -41,7 +41,6 @@
 .hero-recipe-card {
     position: relative;
     min-width: 350px;
-    background: url("https://placehold.co/1000x700");
 }
 
 .hero-recipe-card img {
