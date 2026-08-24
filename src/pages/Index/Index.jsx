@@ -19,7 +19,7 @@ function Index() {
 
         async function carregaReceita() {
             try {
-                const dados = await fetchApi("/receitas", { signal: controller.signal });
+                const dados = await fetchApi("/receitas", {signal: controller.signal});
 
                 if (Array.isArray(dados)) {
                     setReceitas(dados);
@@ -42,9 +42,9 @@ function Index() {
 
     return (
         <>
-            <Header />
-            <HeroSection />
-            <FiltroCategorias />
+            <Header/>
+            <HeroSection/>
+            <FiltroCategorias/>
 
             <div className="container">
                 <div className="highlights-header">
@@ -67,6 +67,7 @@ function Index() {
                         {receitas.map(receita => (
                             <RecipeCard
                                 key={receita.id}
+                                receitaId={receita.id}
                                 titulo={receita.titulo}
                                 tagRestricao={receita.tagRestricao}
                                 tempo={receita.tempoPreparoMinutos}

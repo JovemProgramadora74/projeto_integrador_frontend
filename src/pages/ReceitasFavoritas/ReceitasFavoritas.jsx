@@ -78,6 +78,7 @@ function ReceitasFavoritas() {
                         {receitas.map((receita) => (
                             <RecipeCard
                                 key={receita.id}
+                                receitaId={receita.id}
                                 titulo={receita.titulo}
                                 tagRestricao={receita.tagRestricao}
                                 tempo={receita.tempoPreparoMinutos}
