@@ -5,8 +5,9 @@ import FiltroCategorias from "../../components/FiltroCategorias/FiltroCategorias
 import RecipeCard from "../../components/RecipeCard/RecipeCard.jsx";
 import ChefDestaqueCard from "../../components/CardDestaqueChef/CardDestaqueChef.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
-import {useEffect, useState} from "react";
-import {fetchApi} from "../../servicos/api.js";
+import { useEffect, useState } from "react";
+import { fetchApi } from "../../servicos/api.js";
+import BotaoChat from "../../components/BotaoChat/BotaoChat.jsx";
 
 function Index() {
     const [receitas, setReceitas] = useState([]);
@@ -94,7 +95,7 @@ function Index() {
             <ChefDestaqueCard
                 imagem="https://socialbauru.com.br/wp-content/uploads/2024/05/premioimpera2019-principal-marchante-1024x683-1.jpg"
             />
-            <Footer/>
+            <Footer />
         </>
     );
 }

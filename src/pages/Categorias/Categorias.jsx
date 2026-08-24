@@ -5,6 +5,7 @@ import FiltroCategorias from "../../components/FiltroCategorias/FiltroCategorias
 import RecipeCard from "../../components/RecipeCard/RecipeCard.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
 import { fetchApi } from "../../servicos/api.js";
+import BotaoChat from "../../components/BotaoChat/BotaoChat.jsx";
 
 function Categorias() {
     const [categoriaSelecionada, setCategoriaSelecionada] = useState("Todas");
