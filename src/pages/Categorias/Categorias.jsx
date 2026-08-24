@@ -41,7 +41,7 @@ function Categorias() {
 
     const receitasFiltradas = categoriaSelecionada === "Todas"
         ? receitas
-        : receitas.filter((receita) => receita.categoria === categoriaSelecionada);
+        : receitas.filter((receita) => receita.tagRestricao === categoriaSelecionada);
 
     return (
         <>

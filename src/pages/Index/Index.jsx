@@ -13,6 +13,11 @@ function Index() {
     const [receitas, setReceitas] = useState([]);
     const [erro, setErro] = useState(null);
     const [carregando, setCarregando] = useState(true);
+    const [categoriaSelecionada, setCategoriaSelecionada] = useState("Todas");
+
+    const receitasFiltradas = categoriaSelecionada === "Todas"
+        ? receitas
+        : receitas.filter((receita) => receita.tagRestricao === categoriaSelecionada);
 
     useEffect(() => {
         const controller = new AbortController();
@@ -44,7 +49,8 @@ function Index() {
         <>
             <Header/>
             <HeroSection/>
-            <FiltroCategorias/>
+            <FiltroCategorias categoriaSelecionada={categoriaSelecionada}
+                              onSelecionarCategoria={setCategoriaSelecionada}/>
 
             <div className="container">
                 <div className="highlights-header">
@@ -64,21 +70,24 @@ function Index() {
 
                 {!carregando && !erro && (
                     <div className="grid">
-                        {receitas.map(receita => (
-                            <RecipeCard
-                                key={receita.id}
-                                receitaId={receita.id}
-                                titulo={receita.titulo}
-                                tagRestricao={receita.tagRestricao}
-                                tempo={receita.tempoPreparoMinutos}
-                                imagem={receita.imagemUrl}
-                                dificuldade={receita.dificuldade}
-                                carb={receita.macros?.carboidratosPorcentagem}
-                                gord={receita.macros?.gordurasPorcentagem}
-                                prot={receita.macros?.proteinaPorcentagem}
-                                link={`/receitas/${receita.id}`}
-                            />
-                        ))}
+                        {receitasFiltradas.length > 0 ? (
+                            receitasFiltradas.map((receita) => (
+                                <RecipeCard
+                                    key={receita.id}
+                                    titulo={receita.titulo}
+                                    tagRestricao={receita.tagRestricao}
+                                    tempo={receita.tempoPreparoMinutos}
+                                    imagem={receita.imagemUrl}
+                                    dificuldade={receita.dificuldade}
+                                    carb={receita.macros?.carboidratosPorcentagem}
+                                    gord={receita.macros?.gordurasPorcentagem}
+                                    prot={receita.macros?.proteinaPorcentagem}
+                                    link={`/receitas/${receita.id}`}
+                                />
+                            ))
+                        ) : (
+                            <p>Nenhuma receita encontrada para essa categoria.</p>
+                        )}
                     </div>
                 )}
             </div>
