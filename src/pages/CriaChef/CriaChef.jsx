@@ -8,7 +8,7 @@ function CriaChef() {
     const [nome, setNome] = useState("");
     const [vinculo, setVinculo] = useState("");
     const [email, setEmail] = useState("");
-    const [celular, setCelular] = useState("");
+    const [telefone, setTelefone] = useState("");
 
     const [enviando, setEnviando] = useState(false);
     const [mensagemErro, setMensagemErro] = useState(null);
@@ -26,7 +26,7 @@ function CriaChef() {
             nome,
             vinculo,
             email,
-            telefone: celular,
+            telefone,
         };
 
         try {
@@ -43,7 +43,7 @@ function CriaChef() {
             setNome("");
             setVinculo("");
             setEmail("");
-            setCelular("");
+            setTelefone("");
 
         } catch (error) {
             console.error("Erro ao cadastrar chef:", error);
@@ -112,8 +112,8 @@ function CriaChef() {
                         <input
                             type="tel"
                             placeholder="(00) 00000-0000"
-                            value={celular}
-                            onChange={(e) => setCelular(e.target.value)}
+                            value={telefone}
+                            onChange={(e) => setTelefone(e.target.value)}
                             required
                         />
                     </label>
