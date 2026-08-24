@@ -81,7 +81,6 @@ function Categorias() {
                     )}
                 </div>
             </div>
-            <BotaoChat />
             <Footer />
         </>
     );

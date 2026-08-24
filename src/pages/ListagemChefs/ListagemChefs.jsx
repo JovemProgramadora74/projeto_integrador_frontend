@@ -38,7 +38,6 @@ export default function ListagemChefs() {
                     </div>))}
                 </div>)}
         </main>
-        <BotaoChat />
         <Footer/>
     </div>);
 }

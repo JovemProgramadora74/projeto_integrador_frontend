@@ -14,7 +14,7 @@
 }
 
 .botao-chat:hover {
-    background-color: var(--primaria-hover);
+    background-color: var(--destaque);
 }
 
 .badge-feedback {

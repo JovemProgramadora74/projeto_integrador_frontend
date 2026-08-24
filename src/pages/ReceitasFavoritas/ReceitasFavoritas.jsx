@@ -93,7 +93,6 @@ function ReceitasFavoritas() {
                     </div>
                 )}
             </main>
-            <BotaoChat />
             <Footer />
         </>
     );

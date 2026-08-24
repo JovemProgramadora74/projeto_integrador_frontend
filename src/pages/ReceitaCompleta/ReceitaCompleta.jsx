@@ -124,7 +124,6 @@ function ReceitaCompleta() {
                     </>
                 )}
             </div>
-            <BotaoChat />
             <Footer />
         </>
     );

@@ -86,7 +86,6 @@ function Index() {
             <ChefDestaqueCard
                 imagem="https://socialbauru.com.br/wp-content/uploads/2024/05/premioimpera2019-principal-marchante-1024x683-1.jpg"
             />
-            <BotaoChat />
             <Footer />
         </>
     );
