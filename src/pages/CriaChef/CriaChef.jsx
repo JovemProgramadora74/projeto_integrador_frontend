@@ -26,7 +26,7 @@ function CriaChef() {
             nome,
             vinculo,
             email,
-            celular,
+            telefone: celular,
         };
 
         try {
