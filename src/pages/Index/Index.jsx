@@ -7,7 +7,6 @@ import ChefDestaqueCard from "../../components/CardDestaqueChef/CardDestaqueChef
 import Footer from "../../components/Footer/Footer.jsx";
 import { useEffect, useState } from "react";
 import { fetchApi } from "../../servicos/api.js";
-import BotaoChat from "../../components/BotaoChat/BotaoChat.jsx";
 
 function Index() {
     const [receitas, setReceitas] = useState([]);
@@ -55,7 +54,7 @@ function Index() {
             <div className="container">
                 <div className="highlights-header">
                     <h2>Receitas em destaque</h2>
-                    <a className="link" href="/receitas">Ver todos →</a>
+                    <a className="link" href="/categorias">Ver todos →</a>
                 </div>
 
                 {carregando && (
