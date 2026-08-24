@@ -18,3 +18,12 @@
     align-items: center;
     gap: 20px;
 }
+
+.meu-perfil svg {
+    fill: var(--destaque);
+    transition: fill 0.2s;
+}
+
+.meu-perfil:hover svg {
+    fill: var(--texto);
+}
