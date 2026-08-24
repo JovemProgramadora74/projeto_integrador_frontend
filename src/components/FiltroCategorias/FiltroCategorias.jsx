@@ -2,10 +2,11 @@ import "./FiltroCategorias.css"
 import ItemCategoria from "../ItemCategoria/ItemCategoria.jsx";
 import {
     WheatOff,
-    MilkOff, Leaf, Dumbbell, Wheat, Scale, Vegan, Milk
+    MilkOff, Leaf, Dumbbell, Wheat, Scale, Vegan, Milk, ListFilter
 } from "lucide-react";
 
 const Categorias = [
+    {label: "Todas", icon: <ListFilter/>},
     {label: "Contém Glúten", icon: <Wheat/>},
     {label: "Low Carb", icon: <Scale/>},
     {label: "Sem Lactose", icon: <MilkOff/>},
