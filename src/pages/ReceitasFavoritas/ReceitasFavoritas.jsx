@@ -17,6 +17,12 @@ function ReceitasFavoritas() {
         async function carregaStatusBackend() {
             const token = localStorage.getItem("token");
 
+            if (token == null) {
+                setCarregando(false);
+                setErro("É necessário estar logado para favoritar receitas.");
+                return;
+            }
+
             try {
                 const dados = await fetchApi("/receitas/favoritas", {
                     signal: controller.signal,
