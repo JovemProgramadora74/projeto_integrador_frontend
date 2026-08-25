@@ -120,7 +120,7 @@ export default function EditarChef() {
                 <div className="editar-header">
                     <button
                         className="btn-voltar"
-                        onClick={() => navigate("/chefs")}
+                        onClick={() => navigate("/meus-chefes")}
                         aria-label="Voltar para listagem"
                     >
                         <ArrowLeft size={20} />
