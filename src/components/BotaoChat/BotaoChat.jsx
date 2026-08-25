@@ -1,14 +1,16 @@
+import { useRef, useState } from "react";
 import "./BotaoChat.css";
-import { MessagesSquare } from "lucide-react";
+import { MessagesSquare, X } from "lucide-react";
+import ChatAssistente from "../ChatAssistente/ChatAssistente.jsx";
 
 function BotaoChat() {
-    function pegarPosicao() {
-        return new Promise((resolve, reject) => {
-            navigator.geolocation.getCurrentPosition(resolve, reject);
-        });
-    }
+    const [chatAberto, setChatAberto] = useState(false);
+    const [feedbackEnvio, setFeedbackEnvio] = useState(null);
+    const badgeTimeoutRef = useRef(null);
+    const cliqueTimeoutRef = useRef(null);
 
     async function enviarAlerta() {
+        const token = localStorage.getItem("token");
         try {
             const token = localStorage.getItem("token");
             const posicao = await pegarPosicao();
@@ -17,7 +19,7 @@ function BotaoChat() {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
+                     ...(token && { 'Authorization': `Bearer ${token}` })
                 },
                 body: JSON.stringify({
                     latitude: posicao.coords.latitude,
@@ -26,22 +28,53 @@ function BotaoChat() {
                 }),
             });
 
+            clearTimeout(badgeTimeoutRef.current);
+
             if (response.ok) {
-                console.log('Alerta enviado com sucesso!');
+                setFeedbackEnvio('sucesso');
             } else {
-                console.error(`Erro ao enviar alerta: status ${response.status}`);
+                setFeedbackEnvio('erro');
             }
         } catch (error) {
             console.error('Erro ao enviar alerta:', error);
+            setFeedbackEnvio('erro');
+        } finally {
+            badgeTimeoutRef.current = setTimeout(() => setFeedbackEnvio(null), 3000);
         }
     }
 
+    const alternarChat = () => {
+        clearTimeout(cliqueTimeoutRef.current);
+        cliqueTimeoutRef.current = setTimeout(() => {
+            setChatAberto((aberto) => !aberto);
+        }, 250);
+    };
+
+    const dispararAlertaDuploClique = () => {
+        clearTimeout(cliqueTimeoutRef.current);
+        clearTimeout(badgeTimeoutRef.current);
+        enviarAlerta();
+    };
+
     return (
-        <button
-            className="botao-chat"
-            onDoubleClick={enviarAlerta}>
-            <MessagesSquare/>
-        </button>
+        <>
+            {chatAberto && (
+                <ChatAssistente onFechar={() => setChatAberto(false)} />
+            )}
+            {feedbackEnvio === 'sucesso' && (
+                <span className="badge-feedback sucesso">Formulário enviado</span>
+            )}
+            {feedbackEnvio === 'erro' && (
+                <span className="badge-feedback erro">Erro ao enviar alerta. Tente novamente.</span>
+            )}
+            <button
+                className="botao-chat"
+                onClick={alternarChat}
+                onDoubleClick={dispararAlertaDuploClique}
+            >
+                {chatAberto ? <X /> : <MessagesSquare />}
+            </button>
+        </>
     );
 }
 

@@ -10,6 +10,7 @@ import ListagemChefs from './pages/ListagemChefs/ListagemChefs.jsx'
 import ReceitaCompleta from './pages/ReceitaCompleta/ReceitaCompleta.jsx'
 import ReceitasFavoritas from "./pages/ReceitasFavoritas/ReceitasFavoritas.jsx";
 import Categorias from "./pages/Categorias/Categorias.jsx";
+import BotaoChat from "./components/BotaoChat/BotaoChat.jsx";
 
 createRoot(document.getElementById('root')).render(<StrictMode>
     <BrowserRouter>
@@ -21,8 +22,9 @@ createRoot(document.getElementById('root')).render(<StrictMode>
             <Route path='/cria-chef' element={<CriaChef/>}/>
             <Route path='/meus-chefes' element={<ListagemChefs/>}/>
             <Route path='/receitas/:id' element={<ReceitaCompleta/>}/>
-            <Route path="/receitas/favoritas" element={<ReceitasFavoritas />} />
-            <Route path="/categorias" element={<Categorias />} />
+            <Route path="/receitas/favoritas" element={<ReceitasFavoritas/>}/>
+            <Route path="/categorias" element={<Categorias/>}/>
         </Routes>
+        <BotaoChat />
     </BrowserRouter>
 </StrictMode>)

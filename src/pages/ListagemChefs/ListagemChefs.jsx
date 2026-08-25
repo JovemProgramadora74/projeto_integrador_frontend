@@ -3,6 +3,7 @@ import './ListagemChefs.css';
 
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
+import BotaoChat from "../../components/BotaoChat/BotaoChat.jsx";
 
 export default function ListagemChefs() {
 
@@ -37,7 +38,6 @@ export default function ListagemChefs() {
                     </div>))}
                 </div>)}
         </main>
-
         <Footer/>
     </div>);
 }
