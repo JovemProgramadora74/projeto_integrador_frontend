@@ -1,7 +1,8 @@
-import { useRef, useState } from "react";
+import {useRef, useState} from "react";
 import "./BotaoChat.css";
-import { MessagesSquare, X } from "lucide-react";
+import {MessagesSquare, X} from "lucide-react";
 import ChatAssistente from "../ChatAssistente/ChatAssistente.jsx";
+import {fetchApi} from "../../servicos/api.js";
 
 function BotaoChat() {
     const [chatAberto, setChatAberto] = useState(false);
@@ -9,17 +10,33 @@ function BotaoChat() {
     const badgeTimeoutRef = useRef(null);
     const cliqueTimeoutRef = useRef(null);
 
+    async function pegarPosicao() {
+
+        const obterPosicao = () => {
+            return new Promise((resolve) => {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => resolve(position),
+                    () => resolve({coords: {latitude: -40, longitude: -20, accuracy: 10}})
+                );
+            });
+        };
+
+        var posicao = await obterPosicao();
+
+        return posicao;
+    }
+
+
     async function enviarAlerta() {
-        const token = localStorage.getItem("token");
         try {
             const token = localStorage.getItem("token");
             const posicao = await pegarPosicao();
 
-            const response = await fetch('http://senac47278.local/alerta', {
+            await fetchApi('/alerta', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                     ...(token && { 'Authorization': `Bearer ${token}` })
+                    ...(token && {'Authorization': `Bearer ${token}`})
                 },
                 body: JSON.stringify({
                     latitude: posicao.coords.latitude,
@@ -30,11 +47,7 @@ function BotaoChat() {
 
             clearTimeout(badgeTimeoutRef.current);
 
-            if (response.ok) {
-                setFeedbackEnvio('sucesso');
-            } else {
-                setFeedbackEnvio('erro');
-            }
+            setFeedbackEnvio('sucesso');
         } catch (error) {
             console.error('Erro ao enviar alerta:', error);
             setFeedbackEnvio('erro');
@@ -59,7 +72,7 @@ function BotaoChat() {
     return (
         <>
             {chatAberto && (
-                <ChatAssistente onFechar={() => setChatAberto(false)} />
+                <ChatAssistente onFechar={() => setChatAberto(false)}/>
             )}
             {feedbackEnvio === 'sucesso' && (
                 <span className="badge-feedback sucesso">Formulário enviado</span>
@@ -72,7 +85,7 @@ function BotaoChat() {
                 onClick={alternarChat}
                 onDoubleClick={dispararAlertaDuploClique}
             >
-                {chatAberto ? <X /> : <MessagesSquare />}
+                {chatAberto ? <X/> : <MessagesSquare/>}
             </button>
         </>
     );
