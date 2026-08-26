@@ -116,75 +116,78 @@ export default function EditarChef() {
         <div className="page-container">
             <Header />
 
-            <main className="content-container">
-                <div className="editar-header">
-                    <button
-                        className="btn-voltar"
-                        onClick={() => navigate("/meus-chefes")}
-                        aria-label="Voltar para listagem"
-                    >
-                        <ArrowLeft size={20} />
-                        Voltar
-                    </button>
-                    <h2>Editar Chef</h2>
-                </div>
-
-                {erro && <p className="mensagem-erro">{erro}</p>}
-
-                <form onSubmit={handleSubmit} className="form-chef">
-                    <div className="form-group">
-                        <label htmlFor="nome">Nome:</label>
-                        <input
-                            id="nome"
-                            type="text"
-                            name="nome"
-                            value={formData.nome}
-                            onChange={handleChange}
-                            required
-                            disabled={salvando}
-                        />
-                    </div>
-
-                    <div className="form-group">
-                        <label htmlFor="email">Email:</label>
-                        <input
-                            id="email"
-                            type="email"
-                            name="email"
-                            value={formData.email}
-                            onChange={handleChange}
-                            required
-                            disabled={salvando}
-                        />
-                    </div>
-
-                    <div className="form-group">
-                        <label htmlFor="telefone">Telefone:</label>
-                        <input
-                            id="telefone"
-                            type="tel"
-                            name="telefone"
-                            value={formData.telefone}
-                            onChange={handleChange}
-                            required
-                            disabled={salvando}
-                        />
-                    </div>
-
-                    <div className="form-actions">
-                        <button type="submit" className="btn-salvar" disabled={salvando}>
-                            {salvando ? "Salvando..." : "Salvar"}
-                        </button>
+            <main className="content-container section-editar">
+                <div className="card-editar">
+                    <div className="editar-header">
                         <button
-                            type="button"
-                            className="btn-cancelar"
-                            onClick={() => navigate("/chefs")}
-                            disabled={salvando}
+                            className="btn-voltar"
+                            onClick={() => navigate("/meus-chefes")}
+                            aria-label="Voltar para listagem"
                         >
-                            Cancelar
+                            <ArrowLeft size={18} />
+                            Voltar
                         </button>
+                        <h2 className="editar-titulo">Editar Chef</h2>
                     </div>
-                </form>
+                    <p className="editar-subtitulo">Atualize as informações do perfil selecionado</p>
+
+                    {erro && <p className="mensagem-erro">{erro}</p>}
+
+                    <form onSubmit={handleSubmit}>
+                        <div className="form-grupo">
+                            <label htmlFor="nome">Nome</label>
+                            <input
+                                id="nome"
+                                type="text"
+                                name="nome"
+                                value={formData.nome}
+                                onChange={handleChange}
+                                required
+                                disabled={salvando}
+                            />
+                        </div>
+
+                        <div className="form-grupo">
+                            <label htmlFor="email">E-mail</label>
+                            <input
+                                id="email"
+                                type="email"
+                                name="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                required
+                                disabled={salvando}
+                            />
+                        </div>
+
+                        <div className="form-grupo">
+                            <label htmlFor="telefone">Telefone</label>
+                            <input
+                                id="telefone"
+                                type="tel"
+                                name="telefone"
+                                value={formData.telefone}
+                                onChange={handleChange}
+                                required
+                                disabled={salvando}
+                            />
+                        </div>
+
+                        <div className="form-actions">
+                            <button type="submit" className="btn-salvar" disabled={salvando}>
+                                {salvando ? "Salvando..." : "Salvar alterações"}
+                            </button>
+                            <button
+                                type="button"
+                                className="btn-cancelar"
+                                onClick={() => navigate("/meus-chefes")}
+                                disabled={salvando}
+                            >
+                                Cancelar
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </main>
 
             <Footer />
