@@ -71,91 +71,94 @@ function Cadastrar() {
     }
 
     return (
-        <div className="cadastro">
-            <h1 className="cadastro-titulo">Bem-vindo ao cadastro</h1>
-            <p className="cadastro-subtitulo">Cadastre-se para salvar receitas e acessar conteúdos exclusivos.</p>
 
-            {mensagemSucesso && <p className="mensagem-sucesso">{mensagemSucesso}</p>}
-            {mensagemErro && <p className="mensagem-erro">{mensagemErro}</p>}
+        <section className="cadastro-section">
+            <div className="cadastro">
+                <h1 className="cadastro-titulo">Bem-vindo ao cadastro</h1>
+                <p className="cadastro-subtitulo">Cadastre-se para salvar receitas e acessar conteúdos exclusivos.</p>
 
-            <form onSubmit={quandoCriar}>
-                <div className="cadastro-form-grupo">
-                    <label htmlFor="nome">Nome</label>
-                    <input
-                        id="nome"
-                        type="text"
-                        placeholder="Ex: João"
-                        value={nome}
-                        onChange={(e) => setNome(e.target.value)}
-                        disabled={carregando}
-                        required
-                    />
-                </div>
+                {mensagemSucesso && <p className="mensagem-sucesso">{mensagemSucesso}</p>}
+                {mensagemErro && <p className="mensagem-erro">{mensagemErro}</p>}
 
-                <div className="cadastro-form-grupo">
-                    <label htmlFor="usuario">Usuário</label>
-                    <input
-                        id="usuario"
-                        type="text"
-                        placeholder="Ex: joao_123"
-                        value={usuario}
-                        onChange={(e) => setUsuario(e.target.value)}
-                        disabled={carregando}
-                        required
-                    />
-                </div>
+                <form onSubmit={quandoCriar}>
+                    <div className="cadastro-form-grupo">
+                        <label htmlFor="nome">Nome</label>
+                        <input
+                            id="nome"
+                            type="text"
+                            placeholder="Ex: João"
+                            value={nome}
+                            onChange={(e) => setNome(e.target.value)}
+                            disabled={carregando}
+                            required
+                        />
+                    </div>
 
-                <div className="cadastro-form-grupo">
-                    <label htmlFor="email">E-mail</label>
-                    <input
-                        id="email"
-                        type="email"
-                        placeholder="seu@email.com"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        disabled={carregando}
-                        autoComplete="email"
-                        required
-                    />
-                </div>
+                    <div className="cadastro-form-grupo">
+                        <label htmlFor="usuario">Usuário</label>
+                        <input
+                            id="usuario"
+                            type="text"
+                            placeholder="Ex: joao_123"
+                            value={usuario}
+                            onChange={(e) => setUsuario(e.target.value)}
+                            disabled={carregando}
+                            required
+                        />
+                    </div>
 
-                <div className="cadastro-form-grupo">
-                    <label htmlFor="senha">Senha</label>
-                    <input
-                        id="senha"
-                        type="password"
-                        placeholder="********"
-                        value={senha}
-                        onChange={(e) => setSenha(e.target.value)}
-                        disabled={carregando}
-                        autoComplete="new-password"
-                        required
-                    />
-                </div>
+                    <div className="cadastro-form-grupo">
+                        <label htmlFor="email">E-mail</label>
+                        <input
+                            id="email"
+                            type="email"
+                            placeholder="seu@email.com"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            disabled={carregando}
+                            autoComplete="email"
+                            required
+                        />
+                    </div>
 
-                <div className="cadastro-form-grupo">
-                    <label htmlFor="confirmar-senha">Confirmar Senha</label>
-                    <input
-                        id="confirmar-senha"
-                        type="password"
-                        placeholder="********"
-                        value={confirmarSenha}
-                        onChange={(e) => setConfirmarSenha(e.target.value)}
-                        disabled={carregando}
-                        autoComplete="new-password"
-                        required
-                    />
-                </div>
+                    <div className="cadastro-form-grupo">
+                        <label htmlFor="senha">Senha</label>
+                        <input
+                            id="senha"
+                            type="password"
+                            placeholder="********"
+                            value={senha}
+                            onChange={(e) => setSenha(e.target.value)}
+                            disabled={carregando}
+                            autoComplete="new-password"
+                            required
+                        />
+                    </div>
 
-                <button type="submit" className="btn-cadastrar" disabled={carregando}>
-                    {carregando ? "Cadastrando..." : "Cadastrar"}
-                </button>
+                    <div className="cadastro-form-grupo">
+                        <label htmlFor="confirmar-senha">Confirmar Senha</label>
+                        <input
+                            id="confirmar-senha"
+                            type="password"
+                            placeholder="********"
+                            value={confirmarSenha}
+                            onChange={(e) => setConfirmarSenha(e.target.value)}
+                            disabled={carregando}
+                            autoComplete="new-password"
+                            required
+                        />
+                    </div>
 
-                <p className="fazer-login">
-                    Já tem uma conta? <Link to="/login" className="link">Login</Link>
-                </p>
-            </form>
-        </div>
+                    <button type="submit" className="btn-cadastrar" disabled={carregando}>
+                        {carregando ? "Cadastrando..." : "Cadastrar"}
+                    </button>
+
+                    <p className="fazer-login">
+                        Já tem uma conta? <Link to="/login" className="link">Login</Link>
+                    </p>
+                </form>
+            </div>
+        </section>
     );
 }
 
