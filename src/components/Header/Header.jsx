@@ -13,10 +13,7 @@ export default function Header() {
     return (
         <header className="header-bg">
             <div className="header-content">
-                <div style={{cursor: 'pointer'}} onClick={() => navigate('/')}>
-                    <Logo/>
-                </div>
-
+                <Logo />
                 <NavLinks/>
 
                 <div className="header-right-actions">

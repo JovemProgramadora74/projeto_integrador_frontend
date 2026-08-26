@@ -2,6 +2,7 @@ import "./Cadastro.css";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { fetchApi } from "../../servicos/api.js";
+import Logo from "../../components/Header/Logo.jsx";
 
 function Cadastrar() {
     const [nome, setNome] = useState("");
@@ -73,6 +74,7 @@ function Cadastrar() {
     return (
 
         <section className="cadastro-section">
+            <Logo />
             <div className="cadastro">
                 <h1 className="cadastro-titulo">Bem-vindo ao cadastro</h1>
                 <p className="cadastro-subtitulo">Cadastre-se para salvar receitas e acessar conteúdos exclusivos.</p>

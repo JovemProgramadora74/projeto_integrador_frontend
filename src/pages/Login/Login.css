@@ -1,7 +1,10 @@
 .section-login{
     height: 100dvh;
     display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
+    gap: 1rem;
 }
 
 .login {
@@ -11,7 +14,6 @@
     display: flex;
     flex-direction: column;
     text-align: left;
-    margin: 0 auto;
     background-color: #FFFFFF;
     border-radius: 1.5rem;
 }

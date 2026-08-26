@@ -1,6 +1,10 @@
 .cadastro-section {
-    flex-grow: 1;
+    height: 100dvh;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
 }
 
 .cadastro {
@@ -10,7 +14,6 @@
     display: flex;
     flex-direction: column;
     text-align: left;
-    margin: auto;
     background-color: #FFFFFF;
     border-radius: 1.5rem;
 }
