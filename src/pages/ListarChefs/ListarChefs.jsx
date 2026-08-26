@@ -11,10 +11,17 @@ export default function ListarChefs() {
     const [carregando, setCarregando] = useState(true);
     const [erro, setErro] = useState(null);
     const token = localStorage.getItem("token");
+
     useEffect(() => {
         const controller = new AbortController();
 
         async function carregaChefs() {
+            if (token == null) {
+                setCarregando(false);
+                setErro("É necessário estar logado para ver seus chefes.");
+                return;
+            }
+
             try {
                 const dados = await fetchApi("/contato/meu", {
                     signal: controller.signal,
