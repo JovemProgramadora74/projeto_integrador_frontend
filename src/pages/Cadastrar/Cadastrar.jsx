@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { fetchApi } from "../../servicos/api.js";
 
-function Cadastro() {
+function Cadastrar() {
     const [nome, setNome] = useState("");
     const [usuario, setUsuario] = useState("");
     const [email, setEmail] = useState("");
@@ -159,4 +159,4 @@ function Cadastro() {
     );
 }
 
-export default Cadastro;
+export default Cadastrar;
