@@ -5,11 +5,10 @@ import SearchBar from './SearchBar';
 import Button from './Button';
 import './Header.css';
 import {useState} from "react";
-import {LogIn, LogOut, User} from "lucide-react";
 
 export default function Header() {
     const navigate = useNavigate();
-    const [isAuthenticated, setIsAuthenticated] = useState(!!localStorage.getItem('token'));
+    const [isAuthenticated] = useState(!!localStorage.getItem('token'));
 
     return (
         <header className="header-bg">
