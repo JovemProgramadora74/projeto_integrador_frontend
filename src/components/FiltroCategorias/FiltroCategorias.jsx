@@ -1,9 +1,6 @@
 import "./FiltroCategorias.css"
 import ItemCategoria from "../ItemCategoria/ItemCategoria.jsx";
-import {
-    WheatOff,
-    MilkOff, Leaf, Dumbbell, Wheat, Scale, Vegan, Milk, ListFilter
-} from "lucide-react";
+import {Dumbbell, Leaf, ListFilter, Milk, MilkOff, Scale, Vegan, Wheat, WheatOff} from "lucide-react";
 
 const Categorias = [
     {label: "Todas", icon: <ListFilter/>},
@@ -20,21 +17,23 @@ const Categorias = [
 function FiltroCategorias({categoriaSelecionada, onSelecionarCategoria}) {
 
     return (
-        <div className="categorias-header">
-            <h2>Encontre receitas para <br/> o seu estilo de dieta</h2>
+        <section className="container">
+            <div className="categorias-header">
+                <h2>Encontre receitas para <br/> o seu estilo de dieta</h2>
 
-            <div className="categorias-lista">
-                {Categorias.map((cat) => (
-                    <ItemCategoria
-                        key={cat.label}
-                        label={cat.label}
-                        icon={cat.icon}
-                        ativo={categoriaSelecionada === cat.label}
-                        onClick={() => onSelecionarCategoria(cat.label)}
-                    />
-                ))}
+                <div className="categorias-lista">
+                    {Categorias.map((cat) => (
+                        <ItemCategoria
+                            key={cat.label}
+                            label={cat.label}
+                            icon={cat.icon}
+                            ativo={categoriaSelecionada === cat.label}
+                            onClick={() => onSelecionarCategoria(cat.label)}
+                        />
+                    ))}
+                </div>
             </div>
-        </div>
+        </section>
     )
 }
 

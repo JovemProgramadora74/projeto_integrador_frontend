@@ -18,7 +18,7 @@ function RecipeCard({titulo, imagem, tagRestricao, tempo, dificuldade, prot, car
             </div>
 
             <div className="card-info">
-                <a href={link} className="recipe-card-titulo">{titulo}</a>
+                <a href={link} className="recipe-card-titulo link">{titulo}</a>
 
                 <div className="linha">
                     <div className="tempo">

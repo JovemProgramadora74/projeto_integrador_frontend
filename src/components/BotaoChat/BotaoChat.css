@@ -1,8 +1,7 @@
-
 .botao-chat {
     width: 70px;
     height: 70px;
-    background-color: var(--destaque);
+    background-color: var(--primaria);
     border-Radius: 50%;
     border: none;
     position: fixed;
@@ -14,14 +13,14 @@
 }
 
 .botao-chat:hover {
-    background-color: var(--destaque);
+    background-color: var(--primaria-hover);
 }
 
 .badge-feedback {
     position: fixed;
     right: 100px;
     bottom: 45px;
-    background-color: #fff;
+    background-color: var(--primaria);
     color: var(--texto-inverso);
     padding: 8px 14px;
     border-radius: 15px;

@@ -14,12 +14,13 @@
     display: flex;
     flex-direction: column;
     text-align: left;
-    background-color: #FFFFFF;
+    background-color: var(--fundo-card);
+    border: 1px solid var(--borda);
     border-radius: 1.5rem;
 }
 
 .login-titulo {
-    font-family: 'Playfair Display', serif;
+    font-family: var(--fonte-titulo), serif;
     font-size: 2.2rem;
     line-height: 1.5;
     margin-bottom: 0.5rem;
@@ -28,7 +29,7 @@
 .login-subtitulo {
     font-size: 0.95rem;
     margin-bottom: 2rem;
-    color: #786c66;
+    color: var(--texto-suave);
 }
 
 .login-form-grupo {
@@ -46,11 +47,11 @@
 .login-form-grupo input[type="password"] {
     width: 100%;
     padding: 0.875rem  1rem;
-    border: 1px solid #e6e0d8;
-    background-color: #FAF7F2;
+    border: 1px solid var(--borda);
+    background-color: var(--fundo-card);
     font-family: inherit;
     font-size: 0.95rem;
-    color: #26140e;
+    color: var(--texto-principal);
     border-radius: 0.75rem;
     transition: border-color 0.2s;
 }
@@ -58,11 +59,11 @@
 input[type="email"]:focus,
 input[type="password"]:focus {
     outline: none;
-    border-color: #c2410c;
+    border-color: var(--primaria);
 }
 
 .login-container {
-    color: #786c66;
+    color: var(--texto-principal);
     display: flex;
     justify-content: space-between;
     margin-bottom: 1.5rem;
@@ -74,39 +75,11 @@ input[type="password"]:focus {
     gap: .5rem;
 }
 
-.link {
-    text-decoration: none;
-    color: #c2410c;
-    font-weight: 600;
-}
-
-.link:hover {
-    text-decoration: underline;
-}
-
-.btn-entrar {
-    width: 100%;
-    padding: 0.875rem  1.5rem;
-    background-color: #C24B15;
-    color: #FFFFFF;
-    font-family: inherit;
-    font-size: 1rem;
-    font-weight: 600;
-    border: none;
-    border-radius: 3.125rem;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-.btn-entrar:active {
-    transform: scale(0.99);
-}
-
 .cadastrar-conta {
     text-align: center;
     margin-top: 1.5rem;
     font-size: 0.875rem;
-    color: #786C66;
+    color: var(--texto-principal);
 }
 
 

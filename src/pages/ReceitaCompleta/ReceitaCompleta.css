@@ -16,7 +16,7 @@
 }
 
 .receita-info h1 {
-    font-family: var(--fonte-titulo);
+    font-family: var(--fonte-titulo), serif;
     font-size: 36px;
     color: var(--primaria);
     line-height: 1.2;
@@ -60,7 +60,7 @@
 }
 
 .receita-corpo h2 {
-    font-family: var(--fonte-titulo);
+    font-family: var(--fonte-titulo), serif;
     color: var(--primaria);
     font-size: 22px;
     margin-bottom: 20px;

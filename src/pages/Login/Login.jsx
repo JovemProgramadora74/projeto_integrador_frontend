@@ -107,7 +107,7 @@ function Login() {
                         <Link to="/recuperar-senha" className="link">Esqueceu a senha?</Link>
                     </div>
 
-                    <button type="submit" className="btn-entrar" disabled={carregando}>
+                    <button type="submit" className="btn-principal" disabled={carregando}>
                         {carregando ? "Entrando..." : "Entrar na conta"}
                     </button>
 

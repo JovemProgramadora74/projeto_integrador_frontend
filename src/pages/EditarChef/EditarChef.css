@@ -57,73 +57,11 @@
     color: #786c66;
 }
 
-.form-grupo {
-    margin-bottom: 1.25rem;
-}
-
-.form-grupo label {
-    display: block;
-    font-size: 0.875rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: #26140e;
-}
-
-.form-grupo input {
-    width: 100%;
-    padding: 0.875rem 1rem;
-    border: 1px solid #e6e0d8;
-    background-color: #FAF7F2;
-    font-family: inherit;
-    font-size: 0.95rem;
-    color: #26140e;
-    border-radius: 0.75rem;
-    box-sizing: border-box;
-    transition: border-color 0.2s;
-}
-
-.form-grupo input:focus {
-    outline: none;
-    border-color: #c2410c;
-}
-
-.form-grupo input:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-}
-
 .form-actions {
     display: flex;
     flex-direction: column;
     gap: 0.75rem;
     margin-top: 1.5rem;
-}
-
-.btn-salvar {
-    width: 100%;
-    padding: 0.875rem 1.5rem;
-    background-color: #C24B15;
-    color: #FFFFFF;
-    font-family: inherit;
-    font-size: 1rem;
-    font-weight: 600;
-    border: none;
-    border-radius: 3.125rem;
-    cursor: pointer;
-    transition: background-color 0.2s ease, transform 0.1s ease;
-}
-
-.btn-salvar:hover:not(:disabled) {
-    background-color: #a33c0f;
-}
-
-.btn-salvar:active:not(:disabled) {
-    transform: scale(0.99);
-}
-
-.btn-salvar:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
 }
 
 .btn-cancelar {

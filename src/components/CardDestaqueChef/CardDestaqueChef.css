@@ -19,7 +19,8 @@
 }
 
 .chef-destaque-card-content {
-    background-color: #5A2D1D;
+    background-color: var(--fundo-card);
+    border: 1px solid var(--borda);
     padding: 35px;
     max-width: 400px;
     display: flex;
@@ -28,55 +29,37 @@
 }
 
 .chef-destaque-card-content h2 {
-    color: #FFFFFF;
-    font-family: 'Poppins', sans-serif;
+    color: var(--texto-principal);
+    font-family: var(--fonte-titulo), serif;
     font-size: 28px;
     font-weight: 700;
     margin-bottom: 20px;
 }
 
 .chef-destaque-card-content p {
-    color: #FFFFFF;
-    font-family: var(--fonte-texto);
+    color: var(--texto-suave);
     font-size: 12px;
     line-height: 1.8;
     margin-bottom: 20px;
 }
-
-.chef-destaque-title {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 12px;
-    font-weight: 300;
-    letter-spacing: 2px;
-    color: #c89b3c;
-}
-
 .chef-destaque-card-badge-text {
-    font-family: 'Poppins', sans-serif;
-    font-size: 12px;
-    font-weight: 800;
+    display: flex;
+    gap: 10px;
+    font-size: 13px;
     text-transform: uppercase;
     letter-spacing: 2px;
     line-height: 19px;
-    color: #F4C542;
+    color: var(--destaque);
     margin-bottom: 12px;
 }
 
 /* Nome do chef */
 .chef-destaque-nome {
-    font-family: var(--fonte-texto);
+    font-family: var(--fonte-corpo), serif;
     font-size: 17px;
     font-weight: 700;
-    color: white;
+    color: var(--texto-inverso);
     margin-top: 18px;
-}
-
-.chef-destaque-experiencia {
-    font-family: 'Poppins', sans-serif;
-    font-size: 14px;
-    font-weight: 400;
-    color: #E8CFA5;
-    margin-top: 5px;
 }
 
 /* Botão */
@@ -84,21 +67,49 @@
     display: inline-block;
     margin-top: 20px;
     padding: 12px 26px;
-    background-color: #C0532B;
-    color: white;
+    background-color: var(--primaria);
+    color: var(--texto-inverso);
     text-decoration: none;
-    font-family: 'Poppins', sans-serif;
     font-weight: 600;
     border-radius: 30px;
     transition: 0.3s;
+    cursor: pointer;
+    text-align: center;
 }
 
 .chef-destaque-botao-receita:hover {
-    background-color: #A24322;
+    background-color: var(--primaria-hover);
     transform: translateY(-2px);
 }
 
 .arrow {
     font-size: 18px;
     transition: transform 0.3s ease;
+}
+
+@media (max-width: 900px) {
+    .chef-destaque-card {
+        flex-direction: column;
+        width: auto;
+        margin: 24px 16px;
+    }
+
+    .chef-destaque-card-image-container {
+        height: 260px;
+    }
+
+    .chef-destaque-card-content {
+        max-width: 100%;
+        padding: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    .chef-destaque-card-image-container {
+        height: 200px;
+    }
+
+    .chef-destaque-card-content h2 {
+        font-size: 22px;
+    }
 }

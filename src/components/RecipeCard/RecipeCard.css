@@ -1,39 +1,54 @@
 .recipe-card {
-    background-color: #FFFBF5;
-    border: 1px solid #964B00;
+    background-color: var(--fundo-card);
+    border: 1px solid var(--borda);
     width: 100%;
+    height: 100%;
     border-radius: 25px;
     overflow: hidden;
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .imagem-container {
     width: 100%;
+    height: 200px;
+    flex-shrink: 0;
+}
+
+.titulo-link {
+    text-decoration: none;
+    color: inherit;
 }
 
 .imagem-container img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
     display: block;
 }
 
 .card-info {
-    padding: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    flex-grow: 1;
+    justify-content: space-between;
 }
 
-.recipe-card-titulo {
-    font-size: 1.5rem;
+.card-info a{
+    font-family: var(--fonte-titulo), serif;
+    font-size: 24px;
     font-weight: bold;
-    text-decoration: none;
-    color: var(--texto);
 }
-
 
 .linha {
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 1rem;
-    margin: 1rem 0;
+    font-size: 13px;
 }
 
 .tempo {
@@ -56,4 +71,19 @@
     display: flex;
     justify-content: space-between;
     gap: 8px;
+}
+
+@media (max-width: 600px) {
+    .imagem-container {
+        height: 180px;
+    }
+
+    .card-info {
+        padding: 16px;
+        gap: 18px;
+    }
+
+    .card-info a {
+        font-size: 20px;
+    }
 }

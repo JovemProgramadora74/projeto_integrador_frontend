@@ -2,13 +2,14 @@
     position: absolute;
     top: 12px;
     left: 12px;
-    background : chocolate;
+    background : var(--primaria);
     border-radius: 15px;
     text-align: center;
-    color: white;
+    color: var(--texto-inverso);
     padding: 5px 10px;
     opacity: 0.8;
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    font-size: 13px;
 }
