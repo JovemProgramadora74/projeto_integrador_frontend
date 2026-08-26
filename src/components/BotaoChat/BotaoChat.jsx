@@ -14,18 +14,19 @@ function BotaoChat() {
 
         const obterPosicao = () => {
             return new Promise((resolve) => {
+                if (!navigator.geolocation) {
+                    return resolve({coords: {latitude: -40, longitude: -20, accuracy: 10}});
+                }
                 navigator.geolocation.getCurrentPosition(
                     (position) => resolve(position),
-                    () => resolve({coords: {latitude: -40, longitude: -20, accuracy: 10}})
+                    () => resolve({coords: {latitude: -40, longitude: -20, accuracy: 10}}),
+                    {timeout: 5000}
                 );
             });
         };
 
-        var posicao = await obterPosicao();
-
-        return posicao;
+        return await obterPosicao();
     }
-
 
     async function enviarAlerta() {
         try {
@@ -47,10 +48,15 @@ function BotaoChat() {
 
             clearTimeout(badgeTimeoutRef.current);
 
-            setFeedbackEnvio('sucesso');
+            setFeedbackEnvio({tipo: 'sucesso', mensagem: 'Alerta enviado com sucesso!'});
         } catch (error) {
             console.error('Erro ao enviar alerta:', error);
-            setFeedbackEnvio('erro');
+            clearInterval(badgeTimeoutRef.current);
+            if (error.status === 401) {
+                setFeedbackEnvio({tipo: 'erro', mensagem: "Sessão expirada. Faça login novamente"});
+                return;
+            }
+            setFeedbackEnvio({tipo: 'erro', mensagem: "Não foi possível enviar o alerta. Tente novamente."});
         } finally {
             badgeTimeoutRef.current = setTimeout(() => setFeedbackEnvio(null), 3000);
         }
@@ -74,11 +80,8 @@ function BotaoChat() {
             {chatAberto && (
                 <ChatAssistente onFechar={() => setChatAberto(false)}/>
             )}
-            {feedbackEnvio === 'sucesso' && (
-                <span className="badge-feedback sucesso">Formulário enviado</span>
-            )}
-            {feedbackEnvio === 'erro' && (
-                <span className="badge-feedback erro">Erro ao enviar alerta. Tente novamente.</span>
+            {feedbackEnvio && (
+                <span className={`badge-feedback ${feedbackEnvio.tipo}`}>{feedbackEnvio.mensagem}</span>
             )}
             <button
                 className="botao-chat"
