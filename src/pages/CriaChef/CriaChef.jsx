@@ -1,8 +1,9 @@
 import "./CriaChef.css";
 import Header from "../../components/Header/Header.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
-import { useState } from "react";
-import { fetchApi } from "../../servicos/api.js";
+import {useEffect, useState} from "react";
+import {fetchApi} from "../../servicos/api.js";
+import {useNavigate} from "react-router-dom";
 
 function CriaChef() {
     const [nome, setNome] = useState("");
@@ -13,6 +14,15 @@ function CriaChef() {
     const [enviando, setEnviando] = useState(false);
     const [mensagemErro, setMensagemErro] = useState(null);
     const [mensagemSucesso, setMensagemSucesso] = useState(null);
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            navigate("/login");
+        }
+    }, [navigate]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -34,7 +44,7 @@ function CriaChef() {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    ...(token && { 'Authorization': `Bearer ${token}` })
+                    ...(token && {'Authorization': `Bearer ${token}`})
                 },
                 body: JSON.stringify(dadosChef)
             });
@@ -60,7 +70,7 @@ function CriaChef() {
 
     return (
         <>
-            <Header />
+            <Header/>
             <div className="container">
                 <form className="form-container" onSubmit={handleSubmit}>
                     <h1 className="form-titulo">Novo chef</h1>
@@ -127,7 +137,7 @@ function CriaChef() {
                     </button>
                 </form>
             </div>
-            <Footer />
+            <Footer/>
         </>
     );
 }
