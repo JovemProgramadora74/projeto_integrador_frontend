@@ -1,7 +1,8 @@
-import { useRef, useState } from "react";
+import {useRef, useState} from "react";
 import "./BotaoChat.css";
-import { MessagesSquare, X } from "lucide-react";
+import {MessagesSquare, X} from "lucide-react";
 import ChatAssistente from "../ChatAssistente/ChatAssistente.jsx";
+import {fetchApi} from "../../servicos/api.js";
 
 function BotaoChat() {
     const [chatAberto, setChatAberto] = useState(false);
@@ -9,32 +10,53 @@ function BotaoChat() {
     const badgeTimeoutRef = useRef(null);
     const cliqueTimeoutRef = useRef(null);
 
+    async function pegarPosicao() {
+
+        const obterPosicao = () => {
+            return new Promise((resolve) => {
+                if (!navigator.geolocation) {
+                    return resolve({coords: {latitude: -40, longitude: -20, accuracy: 10}});
+                }
+                navigator.geolocation.getCurrentPosition(
+                    (position) => resolve(position),
+                    () => resolve({coords: {latitude: -40, longitude: -20, accuracy: 10}}),
+                    {timeout: 5000}
+                );
+            });
+        };
+
+        return await obterPosicao();
+    }
+
     async function enviarAlerta() {
-        const token = localStorage.getItem("token");
         try {
-            const response = await fetch('http://senac47278/alerta', {
+            const token = localStorage.getItem("token");
+            const posicao = await pegarPosicao();
+
+            await fetchApi('/alerta', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                     ...(token && { 'Authorization': `Bearer ${token}` })
+                    ...(token && {'Authorization': `Bearer ${token}`})
                 },
                 body: JSON.stringify({
-                    evento: 'alerta',
-                    origem: 'BotaoChat',
-                    timestamp: new Date().toISOString(),
+                    latitude: posicao.coords.latitude,
+                    longitude: posicao.coords.longitude,
+                    precisaoGps: posicao.coords.accuracy
                 }),
             });
 
             clearTimeout(badgeTimeoutRef.current);
 
-            if (response.ok) {
-                setFeedbackEnvio('sucesso');
-            } else {
-                setFeedbackEnvio('erro');
-            }
+            setFeedbackEnvio({tipo: 'sucesso', mensagem: 'Alerta enviado com sucesso!'});
         } catch (error) {
             console.error('Erro ao enviar alerta:', error);
-            setFeedbackEnvio('erro');
+            clearInterval(badgeTimeoutRef.current);
+            if (error.status === 401) {
+                setFeedbackEnvio({tipo: 'erro', mensagem: "Sessão expirada. Faça login novamente"});
+                return;
+            }
+            setFeedbackEnvio({tipo: 'erro', mensagem: "Não foi possível enviar o alerta. Tente novamente."});
         } finally {
             badgeTimeoutRef.current = setTimeout(() => setFeedbackEnvio(null), 3000);
         }
@@ -56,20 +78,17 @@ function BotaoChat() {
     return (
         <>
             {chatAberto && (
-                <ChatAssistente onFechar={() => setChatAberto(false)} />
+                <ChatAssistente onFechar={() => setChatAberto(false)}/>
             )}
-            {feedbackEnvio === 'sucesso' && (
-                <span className="badge-feedback sucesso">Formulário enviado</span>
-            )}
-            {feedbackEnvio === 'erro' && (
-                <span className="badge-feedback erro">Erro ao enviar alerta. Tente novamente.</span>
+            {feedbackEnvio && (
+                <span className={`badge-feedback ${feedbackEnvio.tipo}`}>{feedbackEnvio.mensagem}</span>
             )}
             <button
                 className="botao-chat"
                 onClick={alternarChat}
                 onDoubleClick={dispararAlertaDuploClique}
             >
-                {chatAberto ? <X /> : <MessagesSquare />}
+                {chatAberto ? <X/> : <MessagesSquare/>}
             </button>
         </>
     );

@@ -18,3 +18,13 @@
     align-items: center;
     gap: 20px;
 }
+
+.meu-perfil{
+    text-decoration: none;
+    color: var(--destaque);
+    transition: all 0.2s;
+}
+
+.meu-perfil:hover {
+    filter: brightness(50%);
+}
