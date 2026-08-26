@@ -1,18 +1,28 @@
 import "./CriaChef.css";
 import Header from "../../components/Header/Header.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
-import { useState } from "react";
-import { fetchApi } from "../../servicos/api.js";
+import {useEffect, useState} from "react";
+import {fetchApi} from "../../servicos/api.js";
+import {useNavigate} from "react-router-dom";
 
 function CriaChef() {
     const [nome, setNome] = useState("");
     const [vinculo, setVinculo] = useState("");
     const [email, setEmail] = useState("");
-    const [celular, setCelular] = useState("");
+    const [telefone, setTelefone] = useState("");
 
     const [enviando, setEnviando] = useState(false);
     const [mensagemErro, setMensagemErro] = useState(null);
     const [mensagemSucesso, setMensagemSucesso] = useState(null);
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if (!token) {
+            navigate("/login");
+        }
+    }, [navigate]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -26,7 +36,7 @@ function CriaChef() {
             nome,
             vinculo,
             email,
-            celular,
+            telefone,
         };
 
         try {
@@ -34,7 +44,7 @@ function CriaChef() {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    ...(token && { 'Authorization': `Bearer ${token}` })
+                    ...(token && {'Authorization': `Bearer ${token}`})
                 },
                 body: JSON.stringify(dadosChef)
             });
@@ -43,7 +53,7 @@ function CriaChef() {
             setNome("");
             setVinculo("");
             setEmail("");
-            setCelular("");
+            setTelefone("");
 
         } catch (error) {
             console.error("Erro ao cadastrar chef:", error);
@@ -60,7 +70,7 @@ function CriaChef() {
 
     return (
         <>
-            <Header />
+            <Header/>
             <div className="container">
                 <form className="form-container" onSubmit={handleSubmit}>
                     <h1 className="form-titulo">Novo chef</h1>
@@ -112,8 +122,8 @@ function CriaChef() {
                         <input
                             type="tel"
                             placeholder="(00) 00000-0000"
-                            value={celular}
-                            onChange={(e) => setCelular(e.target.value)}
+                            value={telefone}
+                            onChange={(e) => setTelefone(e.target.value)}
                             required
                         />
                     </label>
@@ -127,7 +137,7 @@ function CriaChef() {
                     </button>
                 </form>
             </div>
-            <Footer />
+            <Footer/>
         </>
     );
 }

@@ -1,10 +1,9 @@
 import "./ReceitasFavoritas.css";
 import Header from "../../components/Header/Header.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
-import RecipeCard from "../../components/RecipeCard/RecipeCard.jsx";
-import { useEffect, useState } from "react";
-import { fetchApi } from "../../servicos/api.js";
-import BotaoChat from "../../components/BotaoChat/BotaoChat.jsx";
+import {useEffect, useState} from "react";
+import {fetchApi} from "../../servicos/api.js";
+import ReceitaGrid from "../../components/ReceitaGrid/ReceitaGrid.jsx";
 
 function ReceitasFavoritas() {
     const [receitas, setReceitas] = useState([]);
@@ -27,7 +26,7 @@ function ReceitasFavoritas() {
                 const dados = await fetchApi("/receitas/favoritas", {
                     signal: controller.signal,
                     headers: {
-                        ...(token && { 'Authorization': `Bearer ${token}` })
+                        ...(token && {'Authorization': `Bearer ${token}`})
                     }
                 });
 
@@ -56,50 +55,19 @@ function ReceitasFavoritas() {
 
     return (
         <>
-            <Header />
+            <Header/>
 
             <main className="container receitas-favoritas">
                 <h1>Receitas Favoritas</h1>
 
-                {carregando && (
-                    <div className="spinner-container">
-                        <div className="spinner" role="status">
-                            <span className="sr-only">Carregando receitas favoritas...</span>
-                        </div>
-                    </div>
-                )}
-
-                {erro && !carregando && (
-                    <p className="mensagem-erro">{erro}</p>
-                )}
-
-                {!carregando && !erro && receitas.length === 0 && (
-                    <p className="mensagem-vazio">
-                        Você ainda não curtiu nenhuma receita.
-                    </p>
-                )}
-
-                {!carregando && !erro && receitas.length > 0 && (
-                    <div className="grid">
-                        {receitas.map((receita) => (
-                            <RecipeCard
-                                key={receita.id}
-                                receitaId={receita.id}
-                                titulo={receita.titulo}
-                                tagRestricao={receita.tagRestricao}
-                                tempo={receita.tempoPreparoMinutos}
-                                imagem={receita.imagemUrl}
-                                dificuldade={receita.dificuldade}
-                                carb={receita.macros?.carboidratosPorcentagem}
-                                gord={receita.macros?.gordurasPorcentagem}
-                                prot={receita.macros?.proteinaPorcentagem}
-                                link={`/receitas/${receita.id}`}
-                            />
-                        ))}
-                    </div>
-                )}
+                <ReceitaGrid
+                    receitas={receitas}
+                    carregando={carregando}
+                    erro={erro}
+                    mensagemVazio={"Você ainda não curtiu nenhuma receita"}
+                />
             </main>
-            <Footer />
+            <Footer/>
         </>
     );
 }

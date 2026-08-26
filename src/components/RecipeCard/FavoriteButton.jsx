@@ -1,17 +1,19 @@
 import './FavoriteButton.css';
-import { Heart } from 'lucide-react';
-import { useState } from 'react';
-import { fetchApi } from '../../servicos/api.js';
+import {Heart} from 'lucide-react';
+import {useState} from 'react';
+import {fetchApi} from '../../servicos/api.js';
 
-function FavoriteButton({ isFavorite = false, receitaId }) {
+function FavoriteButton({isFavorite, receitaId}) {
     const [favorito, setFavorito] = useState(isFavorite);
 
     async function handleFavoritar() {
         const token = localStorage.getItem('token');
 
         try {
+            const method = favorito ? 'DELETE' : 'POST';
+
             await fetchApi(`/receitas/${receitaId}/favoritar`, {
-                method: 'POST',
+                method: method,
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
