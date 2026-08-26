@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-export function LogoutHandler() {
+function Deslogar() {
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -15,3 +15,5 @@ export function LogoutHandler() {
 
     return null; // Não renderiza nada antes do redirecionamento
 }
+
+export default Deslogar

@@ -6,7 +6,7 @@ import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import {Edit, Trash2} from "lucide-react";
 
-export default function ListagemChefs() {
+export default function ListarChefs() {
     const [chefs, setChefs] = useState([]);
     const [carregando, setCarregando] = useState(true);
     const [erro, setErro] = useState(null);
