@@ -174,7 +174,7 @@ export default function EditarChef() {
                         </div>
 
                         <div className="form-actions">
-                            <button type="submit" className="btn-salvar" disabled={salvando}>
+                            <button type="submit" className="btn-principal" disabled={salvando}>
                                 {salvando ? "Salvando..." : "Salvar alterações"}
                             </button>
                             <button

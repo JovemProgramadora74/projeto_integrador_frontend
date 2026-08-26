@@ -1,20 +1,20 @@
 .categorias-header {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     gap: 60px;
-    padding: 40px 40px;
-    background-color: #FDF8F3;
+    padding: 2.5rem;
+    background-color: var(--fundo-principal);
     flex-wrap: wrap;
 }
 .categorias-header h2 {
     font-size: 24px;
     font-weight: 700;
-    color: #3A2E2A;
+    color: var(--texto-principal);
     line-height: 1.3;
     margin: 0;
     min-width: 240px;
-    font-family: "Playfair Display", serif;
+    font-family: var(--fonte-titulo), serif;
     letter-spacing: -0.5px;
 }
 

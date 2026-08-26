@@ -57,8 +57,8 @@ function ReceitasFavoritas() {
         <>
             <Header/>
 
-            <main className="container receitas-favoritas">
-                <h1>Receitas Favoritas</h1>
+            <main className="content-container">
+                <h2>Receitas Favoritas</h2>
 
                 <ReceitaGrid
                     receitas={receitas}

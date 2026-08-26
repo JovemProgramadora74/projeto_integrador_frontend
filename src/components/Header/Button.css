@@ -1,7 +1,8 @@
 .btn-publicar {
-    background-color: #C0532B;
-    color: #FFFFFF;
-    font-family: system-ui, -apple-system, sans-serif;
+    text-decoration: none;
+    background-color: var(--primaria);
+    color: var(--texto-inverso);
+    font-family: var(--fonte-corpo), serif;
     font-size: 15px;
     font-weight: 500;
     padding: 10px 24px;
@@ -13,5 +14,5 @@
 }
 
 .btn-publicar:hover {
-    background-color: #A34220;
+    background-color: var(--primaria-hover);
 }

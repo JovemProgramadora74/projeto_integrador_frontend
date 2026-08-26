@@ -8,7 +8,7 @@
 }
 
 .item-categoria:hover button {
-    background-color: #EAE2DC;
+    background-color: var(--filtro-hover);
     cursor: pointer;
 }
 .item-categoria button{
@@ -16,7 +16,7 @@
     height: 60px;
     border-radius: 100px;
     border: none;
-    background-color: #F5F1ED;
+    background-color: var(--filtro);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,28 +24,27 @@
     padding: 0;
 }
 .item-categoria button svg {
-    color: #A66A4F;
+    color: var(--primaria);
     width: 28px;
     height: 28px;
     stroke-width: 1.5;
 }
 .item-categoria span {
     font-size: 13px;
-    color: #4B4B4B;
-    font-family: "Segoe UI", sans-serif;
+    color: var(--texto-suave);
     font-weight: 500;
     text-align: center;
 }
 .item-categoria.ativo button {
-    background-color: #A66A4F;
+    background-color: var(--primaria);
     border: none;
 }
 
 .item-categoria.ativo button svg {
-    color: white;
+    color: var(--texto-inverso);
 }
 
 .item-categoria.ativo span {
-    color: #A66A4F;
+    color: var(--primaria);
     font-weight: 600;
 }

@@ -1,6 +1,6 @@
 .chat-assistente {
     width: 360px;
-    width: 21vw;
+    max-width: 21vw;
     min-height: 60vh;
     max-height: 70vh;
     position: fixed;
@@ -32,7 +32,7 @@
 }
 
 .chat-assistente-titulo h2 {
-    font-family: var(--fonte-corpo);
+    font-family: var(--fonte-corpo), serif;
     font-size: 1rem;
     font-weight: 700;
 }
@@ -97,8 +97,7 @@
     font-size: 0.9rem;
     line-height: 1.4;
     padding: 12px 14px;
-    border-radius: 12px;
-    border-top-left-radius: 4px;
+    border-radius: 4px 12px 12px 12px;
 }
 
 .chat-assistente-rodape {
@@ -115,7 +114,7 @@
     border-radius: 999px;
     background-color: var(--filtro);
     color: var(--texto-principal);
-    font-family: var(--fonte-corpo);
+    font-family: var(--fonte-corpo), serif;
     font-size: 0.9rem;
 }
 

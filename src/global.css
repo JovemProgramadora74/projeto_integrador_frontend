@@ -1,19 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 :root {
-    --fundo: #FBF6F0;
-    --destaque: #C0532B;
-    --texto: #2B1B17;
-    --borda: #E8DEC8;
+    --fundo-principal: #ffffff;
+    --fundo-escuro: #590202;
+    --fundo-card: #f9f9f9;
+
+    --primaria: #A60303;
+    --primaria-hover: #590202;
+    --destaque: #e67e22;
+
+    --texto-principal: #2b2b2b;
+    --texto-suave: #7f8c8d;
+    --texto-sutil: #bdc3c7;
+    --texto-inverso: #ffffff;
+
+    --borda: #e5e5e5;
+    --filtro: #f2f2f2;
+    --filtro-hover: #e8e8e8;
 
     --fonte-titulo: "Playfair Display", serif;
-    --fonte-texto: "Inter", serif;
+    --fonte-corpo: "Inter", sans-serif;
 
     --largura-container: 1440px;
 }
 
 * {
-
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -21,9 +32,16 @@
 }
 
 body {
-    color: var(--texto);
-    background-color: var(--fundo);
-    font-family: var(--fonte-texto), serif;
+    color: var(--texto-principal);
+    background-color: var(--fundo-principal);
+    font-family: var(--fonte-corpo), serif;
+}
+
+.container {
+    width: 100%;
+    max-width: var(--largura-container);
+    margin: 0 auto;
+    flex-grow: 1;
 }
 
 #root {
@@ -32,20 +50,43 @@ body {
     min-height: 100dvh;
 }
 
-.container {
+.btn-principal {
     width: 100%;
-    max-width: var(--largura-container);
-    margin: 0 auto;
-    flex: 1;
+    padding: 0.875rem 1.5rem;
+    background-color: var(--primaria);
+    color: var(--texto-inverso);
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 3.125rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    padding: 20px 0 60px;
-    flex-grow: 1;
+.btn-principal:hover:not(:disabled) {
+    background-color: var(--primaria-hover);
 }
+
+.btn-principal:active:not(:disabled) {
+    transform: scale(0.99);
+}
+
+.btn-principal:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.link {
+    text-decoration: none;
+    color: var(--primaria);
+    font-weight: 600;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
 
 .spinner-container {
     display: flex;
@@ -101,6 +142,13 @@ body {
     font-size: 1.1rem;
 }
 
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 20px 2.5rem 60px;
+}
+
 @media (max-width: 1100px) {
     .grid {
         grid-template-columns: repeat(2, 1fr);
@@ -112,4 +160,65 @@ body {
         grid-template-columns: 1fr;
         gap: 16px;
     }
+}
+
+.form-grupo {
+    margin-bottom: 1.25rem;
+}
+
+.form-grupo label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.form-grupo input[type="email"],
+.form-grupo input[type="text"],
+.form-grupo input[type="password"],
+.form-grupo input[type="tel"]{
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 1px solid var(--borda);
+    background-color: var(--fundo-card);
+    font-family: inherit;
+    font-size: 0.95rem;
+    color: var(--texto-principal);
+    border-radius: 0.75rem;
+    transition: border-color 0.2s;
+}
+
+.form-grupo input[type="email"]:focus,
+.form-grupo input[type="text"]:focus,
+.form-grupo input[type="password"]:focus {
+    outline: none;
+    border-color: var(--primaria);
+}
+
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.content-container {
+    flex: 1;
+    width: 100%;
+    max-width: var(--largura-container);
+    margin: 0 auto;
+    padding: 2.5rem;
+    box-sizing: border-box;
+}
+
+.content-container h2 {
+    font-size: 2rem;
+    font-family: var(--fonte-titulo), serif;
+    color: var(--texto-principal);
+    margin-bottom: 24px;
+}
+
+.main-icons {
+    color: var(--primaria);
+    width: 1rem;
+    height: 1rem;
 }

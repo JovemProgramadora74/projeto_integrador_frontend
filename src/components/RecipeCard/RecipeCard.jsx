@@ -18,7 +18,7 @@ function RecipeCard({titulo, imagem, tagRestricao, tempo, dificuldade, prot, car
             </div>
 
             <div className="card-info">
-                <a href={link} className="recipe-card-titulo">{titulo}</a>
+                <a href={link} className="recipe-card-titulo link">{titulo}</a>
 
                 <div className="linha">
                     <div className="tempo">
@@ -35,11 +35,11 @@ function RecipeCard({titulo, imagem, tagRestricao, tempo, dificuldade, prot, car
 
                 <div className="grupo-macro">
                     <BarraMacro title="Proteína"
-                                porcentagem={prot} cor="#808000"/>
-                    <BarraMacro title="Carboidrato"
-                                porcentagem={carb} cor="#964B00"/>
+                                porcentagem={prot} cor="#A14A2C"/>
+                    <BarraMacro title="Carbo"
+                                porcentagem={carb} cor="#D4A373"/>
                     <BarraMacro title="Gordura"
-                                porcentagem={gord} cor="#B1481B"/>
+                                porcentagem={gord} cor="#606C38"/>
                 </div>
             </div>
         </div>

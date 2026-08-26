@@ -130,7 +130,7 @@ function CriaChef() {
 
                     <button
                         type="submit"
-                        className="btn-cadastrar"
+                        className="btn-principal"
                         disabled={enviando}
                     >
                         {enviando ? "Cadastrando..." : "Cadastrar chef"}

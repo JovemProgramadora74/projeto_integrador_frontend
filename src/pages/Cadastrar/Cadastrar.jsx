@@ -151,7 +151,7 @@ function Cadastrar() {
                         />
                     </div>
 
-                    <button type="submit" className="btn-cadastrar" disabled={carregando}>
+                    <button type="submit" className="btn-principal" disabled={carregando}>
                         {carregando ? "Cadastrando..." : "Cadastrar"}
                     </button>
 

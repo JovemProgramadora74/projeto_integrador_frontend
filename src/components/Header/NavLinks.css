@@ -6,17 +6,25 @@
 
 .header-nav-item {
     text-decoration: none;
-    color: #2B1B17;
-    font-family: system-ui, -apple-system, sans-serif;
+    color: var(--texto-principal);
+    font-family: var(--fonte-corpo), serif;
     font-size: 16px;
     font-weight: 500;
     transition: color 0.2s ease;
 }
 
 .header-nav-item:hover {
-    color: #C0532B;
+    color: var(--primaria);
 }
 
 .header-nav-item.active {
-    color: #C0532B;
+    color: var(--primaria);
+}
+
+@media (max-width: 900px) {
+    .nav-container {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
 }

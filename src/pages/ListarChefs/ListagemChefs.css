@@ -2,24 +2,8 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: #f9f9f9;
+    background-color: var(--fundo-principal);
     font-family: sans-serif;
-}
-
-.content-container {
-    flex: 1;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 40px 20px;
-    box-sizing: border-box;
-}
-
-.content-container h2 {
-    font-size: 2rem;
-    color: #333;
-    margin-bottom: 24px;
-    text-align: center;
 }
 
 .chefs-list {
@@ -30,13 +14,12 @@
 }
 
 .chef-card {
-    background-color: #ffffff;
-    border: 1px solid #e0e0e0;
+    background-color: var(--fundo-card);
+    border: 1px solid var(--borda);
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s ease,
-    box-shadow 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .chef-card:hover {
@@ -46,17 +29,21 @@
 
 .chef-card h3 {
     font-size: 1.25rem;
-    color: #222;
+    color: var(--texto-principal);
+    margin-top: 0;
+    margin-bottom: 12px;
+    border-bottom: 2px solid var(--primaria);
+    padding-bottom: 6px;
 }
 
 .chef-card p {
     font-size: 0.95rem;
-    color: #555;
+    color: var(--texto-suave);
     margin: 8px 0;
 }
 
 .chef-card strong {
-    color: #333;
+    color: var(--texto-principal);
 }
 
 .chef-header {
@@ -119,10 +106,41 @@
     text-align: center;
 }
 
+.empty-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    background-color: var(--fundo-principal);
+    border: 2px dashed var(--borda);
+    border-radius: 8px;
+    text-align: center;
+}
+
 .empty-state p {
     font-size: 1.2rem;
-    color: #777;
+    color: var(--texto-suave);
     margin: 0;
+}
+
+@media (max-width: 600px) {
+    .content-container {
+        padding: 20px 15px;
+    }
+
+    .content-container h2 {
+        font-size: 1.6rem;
+        margin-bottom: 16px;
+    }
+
+    .chefs-list {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .chef-card {
+        padding: 16px;
+    }
 }
 
 @media (max-width: 600px) {
