@@ -2,11 +2,11 @@ import './Index.css'
 import Header from "../../components/Header/Header.jsx";
 import HeroSection from "../../components/Hero/HeroSection.jsx";
 import FiltroCategorias from "../../components/FiltroCategorias/FiltroCategorias.jsx";
-import RecipeCard from "../../components/RecipeCard/RecipeCard.jsx";
 import ChefDestaqueCard from "../../components/CardDestaqueChef/CardDestaqueChef.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
-import { useEffect, useState } from "react";
-import { fetchApi } from "../../servicos/api.js";
+import {useEffect, useState} from "react";
+import {fetchApi} from "../../servicos/api.js";
+import ReceitaGrid from "../../components/ReceitaGrid/ReceitaGrid.jsx";
 
 function Index() {
     const [receitas, setReceitas] = useState([]);
@@ -32,7 +32,6 @@ function Index() {
                 });
 
                 if (Array.isArray(dados)) {
-                    console.log(dados);
                     setReceitas(dados);
                     setCarregando(false);
                 } else {
@@ -64,38 +63,12 @@ function Index() {
                     <a className="link" href="/categorias">Ver todos →</a>
                 </div>
 
-                {carregando && (
-                    <div className="spinner-container">
-                        <div className="spinner" role="status">
-                            <span className="sr-only">Carregando receitas...</span>
-                        </div>
-                    </div>
-                )}
-
-                {erro && !carregando && <p className="mensagem-erro">{erro}</p>}
-
-                {!carregando && !erro && (
-                    <div className="grid">
-                        {receitasFiltradas.length > 0 ? (
-                            receitasFiltradas.map((receita) => (
-                                <RecipeCard
-                                    key={receita.id}
-                                    titulo={receita.titulo}
-                                    tagRestricao={receita.tagRestricao}
-                                    tempo={receita.tempoPreparoMinutos}
-                                    imagem={receita.imagemUrl}
-                                    dificuldade={receita.dificuldade}
-                                    carb={receita.macros?.carboidratosPorcentagem}
-                                    gord={receita.macros?.gordurasPorcentagem}
-                                    prot={receita.macros?.proteinaPorcentagem}
-                                    link={`/receitas/${receita.id}`} receitaId={receita.id} isFavorite={receita.curtido}
-                                />
-                            ))
-                        ) : (
-                            <p>Nenhuma receita encontrada para essa categoria.</p>
-                        )}
-                    </div>
-                )}
+                <ReceitaGrid
+                    receitas={receitasFiltradas}
+                    carregando={carregando}
+                    erro={erro}
+                    mensagemVazio="Nenhuma receita encontrada para essa categoria."
+                />
             </div>
 
             <ChefDestaqueCard

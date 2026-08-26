@@ -1,11 +1,10 @@
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 import "./Categorias.css";
 import Header from "../../components/Header/Header.jsx";
 import FiltroCategorias from "../../components/FiltroCategorias/FiltroCategorias.jsx";
-import RecipeCard from "../../components/RecipeCard/RecipeCard.jsx";
 import Footer from "../../components/Footer/Footer.jsx";
-import { fetchApi } from "../../servicos/api.js";
-import BotaoChat from "../../components/BotaoChat/BotaoChat.jsx";
+import {fetchApi} from "../../servicos/api.js";
+import ReceitaGrid from "../../components/ReceitaGrid/ReceitaGrid.jsx";
 
 function Categorias() {
     const [categoriaSelecionada, setCategoriaSelecionada] = useState("Todas");
@@ -18,7 +17,14 @@ function Categorias() {
 
         async function carregarReceitas() {
             try {
-                const dados = await fetchApi("/receitas", { signal: controller.signal });
+                const token = localStorage.getItem("token");
+
+                const dados = await fetchApi("/receitas", {
+                    signal: controller.signal, headers: {
+                        'Content-Type': 'application/json',
+                        ...(token && {'Authorization': `Bearer ${token}`})
+                    },
+                });
 
                 if (Array.isArray(dados)) {
                     setReceitas(dados);
@@ -45,43 +51,19 @@ function Categorias() {
 
     return (
         <>
-            <Header />
+            <Header/>
             <FiltroCategorias
                 categoriaSelecionada={categoriaSelecionada}
                 onSelecionarCategoria={setCategoriaSelecionada}
             />
             <div className="container">
-                <div className="grid">
-                    {carregando && (
-                        <div className="spinner-container">
-                            <div className="spinner" role="status">
-                                <span className="sr-only">Carregando receitas...</span>
-                            </div>
-                        </div>
-                    )}
-
-                    {erro && !carregando && <p className="mensagem-erro">{erro}</p>}
-
-                    {!carregando && !erro && receitasFiltradas.length > 0 && (
-                        receitasFiltradas.map((receita) => (
-                            <RecipeCard
-                                key={receita.id}
-                                receitaId={receita.id}
-                                titulo={receita.titulo}
-                                tagRestricao={receita.tagRestricao}
-                                tempo={receita.tempoPreparoMinutos}
-                                imagem={receita.imagemUrl}
-                                dificuldade={receita.dificuldade}
-                                carb={receita.macros?.carboidratosPorcentagem}
-                                gord={receita.macros?.gordurasPorcentagem}
-                                prot={receita.macros?.proteinaPorcentagem}
-                                link={`/receitas/${receita.id}`}
-                            />
-                        ))
-                    )}
-                </div>
+                <ReceitaGrid
+                    receitas={receitasFiltradas}
+                    carregando={carregando}
+                    erro={erro}
+                />
             </div>
-            <Footer />
+            <Footer/>
         </>
     );
 }
