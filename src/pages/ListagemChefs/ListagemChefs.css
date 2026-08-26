@@ -35,7 +35,8 @@
     border-radius: 8px;
     padding: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .chef-card:hover {
@@ -46,10 +47,6 @@
 .chef-card h3 {
     font-size: 1.25rem;
     color: #222;
-    margin-top: 0;
-    margin-bottom: 12px;
-    border-bottom: 2px solid #C0532B;
-    padding-bottom: 6px;
 }
 
 .chef-card p {
@@ -60,6 +57,55 @@
 
 .chef-card strong {
     color: #333;
+}
+
+.chef-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    gap: 1rem;
+    border-bottom: 2px solid #c0532b;
+    padding-bottom: 6px;
+}
+
+.chef-header h3 {
+    margin: 0;
+    flex: 1;
+}
+
+.chef-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-editar,
+.btn-remover {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.btn-editar {
+    color: #2196f3;
+}
+
+.btn-editar:hover {
+    background-color: #e3f2fd;
+}
+
+.btn-remover {
+    color: #f44336;
+}
+
+.btn-remover:hover {
+    background-color: #ffebee;
 }
 
 .empty-state {
