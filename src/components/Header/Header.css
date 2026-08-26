@@ -19,11 +19,12 @@
     gap: 20px;
 }
 
-.meu-perfil svg {
-    fill: var(--destaque);
-    transition: fill 0.2s;
+.meu-perfil{
+    text-decoration: none;
+    color: var(--destaque);
+    transition: all 0.2s;
 }
 
-.meu-perfil:hover svg {
-    fill: var(--texto);
+.meu-perfil:hover {
+    filter: brightness(50%);
 }

@@ -11,6 +11,7 @@ import ReceitaCompleta from './pages/ReceitaCompleta/ReceitaCompleta.jsx'
 import ReceitasFavoritas from "./pages/ReceitasFavoritas/ReceitasFavoritas.jsx";
 import Categorias from "./pages/Categorias/Categorias.jsx";
 import BotaoChat from "./components/BotaoChat/BotaoChat.jsx";
+import {LogoutHandler} from "./pages/LogoutHandler/LogoutHandler.jsx";
 
 createRoot(document.getElementById('root')).render(<StrictMode>
     <BrowserRouter>
@@ -18,6 +19,7 @@ createRoot(document.getElementById('root')).render(<StrictMode>
             {/*Adicionar as rotas aqui abaixo */}
             <Route path='/' element={<Index/>}/>
             <Route path='/login' element={<Login/>}/>
+            <Route path='/logout' element={<LogoutHandler />}/>
             <Route path='/cadastro' element={<Cadastro/>}/>
             <Route path='/cria-chef' element={<CriaChef/>}/>
             <Route path='/meus-chefes' element={<ListagemChefs/>}/>
