@@ -2,6 +2,9 @@
     width: 100%;
     background-color: var(--fundo-principal);
     border-bottom: 1px solid var(--borda);
+    position: sticky;
+    top: 0;
+    z-index: 99;
 }
 
 .header-content {

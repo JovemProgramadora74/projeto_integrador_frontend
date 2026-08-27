@@ -5,6 +5,7 @@
     background: var(--fundo-principal);
     flex-wrap: nowrap;
     height: 600px;
+    margin-top: 3rem;
 }
 
 .hero-text {
