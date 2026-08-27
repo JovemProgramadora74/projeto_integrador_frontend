@@ -48,15 +48,15 @@ function BotaoChat() {
 
             clearTimeout(badgeTimeoutRef.current);
 
-            setFeedbackEnvio({tipo: 'sucesso', mensagem: 'Alerta enviado com sucesso!'});
+            setFeedbackEnvio({tipo: 'sucesso', mensagem: 'Formulário enviado com sucesso!'});
         } catch (error) {
-            console.error('Erro ao enviar alerta:', error);
+            console.error('Erro ao enviar formulário:', error);
             clearInterval(badgeTimeoutRef.current);
             if (error.status === 401) {
                 setFeedbackEnvio({tipo: 'erro', mensagem: "Sessão expirada. Faça login novamente"});
                 return;
             }
-            setFeedbackEnvio({tipo: 'erro', mensagem: "Não foi possível enviar o alerta. Tente novamente."});
+            setFeedbackEnvio({tipo: 'erro', mensagem: "Não foi possível enviar o formulário. Tente novamente."});
         } finally {
             badgeTimeoutRef.current = setTimeout(() => setFeedbackEnvio(null), 3000);
         }
