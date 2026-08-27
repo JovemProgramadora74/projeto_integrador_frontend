@@ -31,7 +31,7 @@ function Login() {
 
             if (dados.token) {
                 localStorage.setItem("token", dados.token);
-                navigate("/"); // Redireciona para a página principal após sucesso
+                navigate("/");
             } else {
                 setMensagemErro("Token não retornado pelo servidor.");
             }
@@ -39,7 +39,7 @@ function Login() {
         } catch (erro) {
             console.error("Erro ao realizar login:", erro);
 
-            if (erro.status === 401) {
+            if (erro.status >= 400 && erro.status < 500) {
                 setMensagemErro(erro.message || "E-mail ou senha incorretos.");
             } else {
                 setMensagemErro("Não foi possível conectar ao servidor.");
