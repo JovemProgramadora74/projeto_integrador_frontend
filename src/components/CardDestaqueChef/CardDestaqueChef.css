@@ -1,31 +1,35 @@
 .chef-destaque-card {
     display: flex;
     flex-direction: row;
-    border-radius: 20px;
+    border-radius: 1rem;
+    border: 1px solid var(--borda);
     width: 100%;
     max-width: 1200px;
+    max-height: 400px;
     margin: 40px auto;
     overflow: hidden;
 }
 
 .chef-destaque-card-image-container {
-    flex-grow: 1;
+    flex: 3;
+    position: relative;
 }
 
 .chef-destaque-card-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
 }
 
 .chef-destaque-card-content {
     background-color: var(--fundo-card);
-    border: 1px solid var(--borda);
     padding: 35px;
-    max-width: 400px;
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    box-sizing: border-box;
 }
 
 .chef-destaque-card-content h2 {
@@ -42,6 +46,7 @@
     line-height: 1.8;
     margin-bottom: 20px;
 }
+
 .chef-destaque-card-badge-text {
     display: flex;
     gap: 10px;
@@ -99,7 +104,7 @@
     }
 
     .chef-destaque-card-content {
-        max-width: 100%;
+        width: 100%;
         padding: 24px;
     }
 }
